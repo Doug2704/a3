@@ -1,0 +1,34 @@
+[
+  {
+    "id": "usr001",
+    "nomeCompleto": "Beatriz Costa",
+    "email": "beatriz.costa@example.com",
+    "login": "bia.costa",
+    "areaAtuacao": "Suporte Técnico N1",
+    "perfil": "operador"
+  },
+  {
+    "id": "usr002",
+    "nomeCompleto": "Carlos Alberto Souza",
+    "email": "carlos.souza@example.com",
+    "login": "carlos.souza",
+    "areaAtuacao": null,
+    "perfil": "gerenciador"
+  },
+  {
+    "id": "usr003",
+    "nomeCompleto": "Fernanda Lima",
+    "email": "fernanda.lima@example.com",
+    "login": "fe.lima",
+    "areaAtuacao": "Monitoramento de Rede",
+    "perfil": "operador"
+  },
+  {
+    "id": "usr004",
+    "nomeCompleto": "Ricardo Mendes",
+    "email": "ricardo.mendes@example.com",
+    "login": "ricardo.mendes",
+    "areaAtuacao": "Administração de Servidores",
+    "perfil": "operador"
+  }
+]

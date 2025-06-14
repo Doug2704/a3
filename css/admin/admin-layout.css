@@ -1,0 +1,319 @@
+/* css/admin/admin-layout.css */
+
+body {
+    overflow-x: hidden; 
+}
+
+.btn-toggle-sidebar {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1005; 
+    background-color: var(--cor-fundo-elemento);
+    color: var(--cor-texto-primario);
+    border: 1px solid var(--cor-borda-elemento);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem; /* Ajustado para ícone de barras/times */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: var(--transicao-tema), left 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Estilo para o botão de alternar tema */
+#btn-alternar-tema {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: none;
+    border: 2px solid #CC0000; /* Borda vermelha mais forte */
+    border-radius: 50%; /* Torna-o um círculo */
+    padding: 10px; /* Espaçamento interno para o círculo */
+    cursor: pointer;
+    font-size: 1.2em;
+    color: var(--cor-texto-secundario);
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+#btn-alternar-tema:hover {
+    color: var(--cor-texto-primario);
+    border-color: #CC0000; /* Mantém a cor da borda no hover, vermelho mais forte */
+}
+
+#btn-alternar-tema i {
+    pointer-events: none; /* Garante que o clique seja no botão, não no ícone */
+}
+
+.sidebar-admin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px; /* Largura aumentada um pouco */
+    height: 100vh;
+    background-color: var(--cor-fundo-elemento);
+    border-right: 1px solid var(--cor-borda-elemento);
+    box-shadow: 3px 0 8px rgba(0,0,0,0.15); /* Sombra um pouco mais pronunciada */
+    padding: 15px; /* Padding geral da sidebar */
+    display: flex;
+    flex-direction: column;
+    z-index: 1000; 
+    transform: translateX(-100%); 
+    transition: transform 0.3s ease-in-out, var(--transicao-tema);
+}
+
+.sidebar-admin.aberta {
+    transform: translateX(0); 
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 15px 20px; /* Aumentado o padding para afastar o X da logo */
+    border-bottom: 1px solid var(--cor-borda-elemento);
+}
+
+.sidebar-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+}
+
+.sidebar-logo-container i {
+    font-size: 1.5rem;
+    color: #CC0000;
+}
+
+.sidebar-header {
+    padding: 20px 15px;
+    border-bottom: 1px solid var(--cor-borda-elemento);
+    margin-bottom: 10px;
+}
+
+.sidebar-header .sidebar-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.5rem; /* Aumentado o tamanho da fonte */
+    color: #e50914; /* Vermelho mais vibrante */
+    font-weight: 700; /* Fonte mais negrito */
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header .fa-shield-alt {
+    font-size: 1.8rem; /* Tamanho aumentado para o ícone */
+    color: #e50914; /* Mesma cor do texto */
+}
+
+/* Botão de fechar movido para o rodapé */
+
+.sidebar-nav {
+    flex-grow: 1; 
+    overflow-y: auto; 
+}
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar-nav li a {
+    display: flex; 
+    align-items: center;
+    padding: 13px 15px; /* Padding aumentado */
+    text-decoration: none;
+    color: var(--cor-texto-secundario);
+    border-radius: 6px; /* Bordas mais arredondadas */
+    margin-bottom: 6px; /* Espaçamento entre itens */
+    font-weight: 500; /* Fonte um pouco mais forte */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.sidebar-nav li a i {
+    margin-right: 12px; /* Espaçamento do ícone */
+    width: 22px; 
+    text-align: center;
+    font-size: 0.95rem; /* Tamanho do ícone */
+}
+.sidebar-nav li a:hover,
+.sidebar-nav li a.ativo {
+    background-color: transparent; /* Remove o fundo vermelho */
+    color: var(--cor-texto-primario); /* Altera a cor do texto para o primário no hover/ativo */
+    border-left: 4px solid var(--cor-primaria-urgencia); /* Adiciona a borda vertical vermelha */
+    padding-left: 11px; /* Ajusta o padding para compensar a borda */
+}
+
+.sidebar-nav li a.ativo {
+    background-color: var(--cor-fundo-elemento); /* Mantém o fundo neutro para o ativo */
+    color: var(--cor-primaria-urgencia); /* Define a cor do texto para o vermelho primário no ativo */
+}
+
+.sidebar-nav li a:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Fundo sutil no hover */
+}
+
+.sidebar-footer {
+    margin-top: auto; 
+    padding-top: 15px;
+    border-top: 1px solid var(--cor-borda-elemento);
+}
+.sidebar-footer .btn-sair {
+    width: 100%;
+    background-color: var(--cor-botao-fundo); /* Volta ao fundo cinza padrão */
+    color: var(--cor-botao-texto);
+    border-color: var(--cor-botao-borda);
+    text-align: left; 
+    padding: 12px 15px; 
+    display: flex; 
+    align-items: center;
+}
+.sidebar-footer .btn-sair:hover {
+    background-color: var(--cor-botao-fundo-hover); /* Volta ao hover cinza padrão */
+    border-color: var(--cor-botao-borda-hover);
+    filter: none; /* Remove o filtro de brilho */
+}
+
+/* Barra de fechar o menu */
+.sidebar-close-bar {
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid var(--cor-borda-elemento);
+    margin-bottom: 15px;
+}
+
+.btn-close-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--cor-primaria-urgencia);
+    border: 1px solid var(--cor-primaria-urgencia);
+    border-radius: 6px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-close-sidebar:hover {
+    background-color: #e63946; /* Vermelho um pouco mais claro no hover */
+    border-color: #e63946;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(229, 9, 20, 0.2);
+}
+
+.btn-close-sidebar i {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.btn-close-sidebar:hover i {
+    transform: translateX(-3px);
+}
+
+/* Estilos do botão de toggle do menu */
+.btn-toggle-sidebar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: var(--cor-fundo-elemento);
+    border: 1px solid var(--cor-borda-elemento);
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--cor-texto-primario);
+}
+
+.btn-toggle-sidebar:hover {
+    background: var(--cor-fundo-elemento-claro);
+    transform: scale(1.05);
+}
+
+.btn-toggle-sidebar i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+/* Ajustes no rodapé */
+.sidebar-footer {
+    padding-top: 10px;
+    border-top: 1px solid var(--cor-borda-elemento);
+    margin-top: auto;
+}
+
+.sidebar-footer .btn-fechar-sidebar {
+    background-color: var(--cor-primaria-urgencia); /* Fundo vermelho forte para Fechar */
+    color: var(--cor-texto-botao-primario-urgencia); /* Texto branco */
+    border-color: var(--cor-primaria-urgencia); /* Borda vermelha forte */
+    margin-bottom: 10px; /* Espaçamento entre Fechar e Sair */
+}
+
+.sidebar-footer .btn-fechar-sidebar:hover {
+    filter: brightness(0.9); /* Efeito de escurecimento no hover */
+}
+
+.sidebar-footer .btn-sair i {
+    margin-right: 10px; /* Espaçamento do ícone sair */
+}
+
+.conteudo-principal-admin {
+    padding-left: 0; 
+    margin-left: 0;  
+    padding-top: 40px; /* Aumentado o padding superior */
+    transition: margin-left 0.3s ease-in-out; 
+    width: 100%; 
+}
+
+/* Estilo para o cabeçalho padrão das páginas de admin (ex: Logs, Usuários, etc.) */
+.cabecalho-pagina-admin {
+    padding: 15px 20px; /* Adicionado padding lateral */
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--cor-borda-elemento);
+    /* Removido text-align: center daqui, pois o H1 é flex e se auto-centralizará */
+}
+
+.cabecalho-pagina-admin h1 {
+    font-size: 1.8rem;
+    color: var(--cor-texto-primario);
+    display: flex;
+    align-items: center;
+    justify-content: center; /* ADICIONADO: Centraliza o conteúdo do H1 (ícone e texto) */
+    font-weight: 600; /* Peso da fonte para o título */
+}
+
+.cabecalho-pagina-admin h1 i { /* Estilo para o ícone no título da página */
+    margin-right: 10px;
+    color: var(--cor-primaria-urgencia); /* Ícone do título com destaque */
+    font-size: 1.6rem; /* Ajuste do tamanho do ícone se necessário */
+}
+
+
+/* Estilo para o cabeçalho de saudação específico da Home do Admin */
+.cabecalho-saudacao-admin {
+    text-align: center;
+    padding: 25px 15px; 
+    margin-bottom: 25px; 
+}
+.saudacao-admin-titulo {
+    font-size: 2rem; 
+    color: var(--cor-texto-primario); 
+    font-weight: 600; 
+}

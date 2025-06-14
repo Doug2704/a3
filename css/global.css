@@ -1,0 +1,186 @@
+/* css/global.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-fundo-pagina: #f4f7f6;
+    --cor-texto-primario: #212529;
+    --cor-texto-secundario: #555;
+    --cor-fundo-elemento: #ffffff;
+    --cor-borda-elemento: #dee2e6;
+    --cor-sombra-elemento: rgba(0, 0, 0, 0.1);
+    --cor-fundo-input: #ffffff;
+    --cor-texto-input: #495057;
+    --cor-borda-input: #ced4da;
+    --cor-borda-input-focus: #80bdff;
+    --cor-primaria-urgencia: #CC0000;
+    --cor-texto-botao-primario-urgencia: #ffffff;
+    --cor-secundaria-urgencia: #f0ad4e;
+    --cor-link: #007bff;
+    --cor-link-hover: #0056b3;
+    --cor-botao-fundo: #6c757d;
+    --cor-botao-texto: #ffffff;
+    --cor-botao-borda: #6c757d;
+    --cor-botao-fundo-hover: #5a6268;
+    --cor-botao-borda-hover: #545b62;
+    --transicao-tema: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode {
+    --cor-fundo-pagina: #1a1a1a;
+    --cor-texto-primario: #e0e0e0;
+    --cor-texto-secundario: #adb5bd;
+    --cor-fundo-elemento: #2c2c2c;
+    --cor-borda-elemento: #444444;
+    --cor-sombra-elemento: rgba(0, 0, 0, 0.3);
+    --cor-fundo-input: #3b3b3b;
+    --cor-texto-input: #e0e0e0;
+    --cor-borda-input: #555555;
+    --cor-borda-input-focus: #007bff;
+    --cor-link: #63a4ff;
+    --cor-link-hover: #82b7ff;
+    --cor-botao-fundo: #5a6268;
+    --cor-botao-texto: #ffffff;
+    --cor-botao-borda: #5a6268;
+    --cor-botao-fundo-hover: #495057;
+    --cor-botao-borda-hover: #3f464d;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--cor-fundo-pagina);
+    color: var(--cor-texto-primario);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: var(--transicao-tema);
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--cor-botao-fundo);
+    color: var(--cor-botao-texto);
+    border: 1px solid var(--cor-botao-borda);
+    transition: var(--transicao-tema);
+}
+button:hover {
+    background-color: var(--cor-botao-fundo-hover);
+    border-color: var(--cor-botao-borda-hover);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--cor-fundo-input);
+    color: var(--cor-texto-input);
+    transition: var(--transicao-tema);
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border-color: var(--cor-borda-input-focus);
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.cabecalho-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    position: relative;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container i {
+    font-size: 2rem;
+    color: #e50914; /* Ícone do escudo em vermelho */
+    transition: color 0.3s ease;
+}
+
+.logo-container h1 {
+    margin: 0;
+    color: #e50914; /* Nome do software em vermelho */
+    font-size: 2rem;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+/* Garantir que o tema escuro não sobrescreva as cores */
+body.dark-mode .logo-container i,
+body.dark-mode .logo-container h1 {
+    color: #e50914; /* Manter vermelho no tema escuro */
+}
+
+/* Estilo para o botão de alternar tema */
+#btn-alternar-tema {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: none;
+    border: 2px solid #CC0000; /* Borda vermelha mais forte */
+    border-radius: 50%; /* Torna-o um círculo */
+    padding: 10px; /* Espaçamento interno para o círculo */
+    cursor: pointer;
+    font-size: 1.2em;
+    color: var(--cor-texto-secundario);
+    transition: color 0.3s ease, border-color 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn-alternar-tema:hover {
+    color: var(--cor-texto-primario);
+    border-color: #CC0000; /* Mantém a cor da borda no hover, vermelho mais forte */
+}
+
+#btn-alternar-tema i {
+    pointer-events: none; /* Garante que o clique seja no botão, não no ícone */
+    font-size: 1.2rem;
+}
+
+/* Estilos para o tema escuro */
+body.dark-mode #btn-alternar-tema {
+    color: #ffffff; /* Branco no tema escuro */
+    border-color: #e50914; /* Vermelho mais claro no tema escuro */
+}
+
+body.dark-mode #btn-alternar-tema:hover {
+    color: #ffffff;
+    border-color: #e50914;
+}
+
+/* Estilos para o ícone de alerta */
+.cabecalho-principal .icone-alerta {
+    color: var(--cor-secundaria-urgencia);
+}

@@ -1,0 +1,106 @@
+.pagina-usuarios-admin {
+    padding: 20px;
+}
+
+.acoes-cabecalho a.btn-acao-principal {
+    background-color: var(--cor-primaria-urgencia);
+    color: var(--cor-texto-botao-primario-urgencia);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: filter 0.2s ease;
+}
+.acoes-cabecalho a.btn-acao-principal:hover {
+    filter: brightness(0.9);
+}
+
+.filtros-tabela {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.filtros-tabela select {
+    padding: 8px 12px;
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    background-color: var(--cor-fundo-input);
+    color: var(--cor-texto-input);
+    min-width: 250px;
+}
+.filtros-tabela .btn-acao-secundario {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+.tabela-container {
+    background-color: var(--cor-fundo-elemento);
+    border: 1px solid var(--cor-borda-elemento);
+    border-radius: 8px;
+    overflow-x: auto;
+    box-shadow: 0 2px 5px var(--cor-sombra-elemento);
+}
+
+.tabela-dados {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-dados th,
+.tabela-dados td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda-elemento);
+    color: var(--cor-texto-secundario);
+}
+
+.tabela-dados th {
+    background-color: var(--cor-fundo-pagina); 
+    color: var(--cor-texto-primario);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+.tabela-dados tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-dados tbody tr:hover {
+    background-color: var(--cor-fundo-pagina); 
+}
+
+.tabela-dados td.carregando-dados, 
+.tabela-dados td.nenhum-usuario {
+    text-align: center;
+    padding: 25px;
+    font-style: italic;
+}
+
+.acoes-tabela {
+    text-align: center;
+    width: 100px;
+}
+.btn-acao-tabela {
+    background: transparent;
+    border: none;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    padding: 5px 7px;
+    margin: 0 3px;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+.btn-acao-tabela.editar:hover {
+    color: var(--cor-link);
+}
+.btn-acao-tabela.excluir:hover {
+    color: var(--cor-primaria-urgencia);
+}

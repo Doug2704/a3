@@ -1,0 +1,193 @@
+/* css/login.css */
+
+.conteudo-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.card-login {
+    position: relative;
+    background-color: var(--cor-fundo-elemento);
+    color: var(--cor-texto-card);
+    padding: 50px 40px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--cor-sombra-elemento);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid var(--cor-borda-elemento);
+    transition: var(--transicao-tema);
+}
+
+.card-login h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: var(--cor-texto-primario);
+}
+
+.card-login .subtitulo-card {
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    color: var(--cor-texto-secundario);
+}
+
+.campo-formulario {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--cor-texto-primario);
+}
+
+.campo-senha-container {
+    position: relative; /* Essencial para posicionar o botão dentro dele */
+    display: flex;     /* Para alinhar itens, embora o botão será absoluto */
+    align-items: center;
+}
+
+/* Garante que o input de senha ocupe o espaço e tenha padding para o botão */
+.campo-senha-container input[type="password"] {
+    flex-grow: 1; /* Ocupa o espaço disponível no container flex */
+    padding-right: 45px; /* Espaço à direita para o botão não sobrepor o texto */
+    /* width: 100% é herdado de global.css e se aplica ao container pai (.campo-formulario) */
+}
+
+.btn-mostrar-senha {
+    background: transparent;
+    border: none;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    font-size: 1rem;
+    
+    /* Posicionamento absoluto dentro do .campo-senha-container */
+    position: absolute;
+    right: 10px; /* Distância da borda direita do container */
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    
+    padding: 6px; /* Área de clique do botão */
+    z-index: 3; /* Para garantir que fique sobre qualquer borda do input */
+    
+    display: inline-flex; /* Para o ícone alinhar corretamente */
+    align-items: center;
+    justify-content: center;
+    transition: var(--transicao-tema);
+    /* margin-left não é mais necessário com position: absolute */
+}
+.btn-mostrar-senha:hover {
+    color: var(--cor-texto-primario);
+}
+
+.btn-acessar {
+    background-color: var(--cor-primaria-urgencia);
+    color: var(--cor-texto-botao-primario-urgencia);
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-acessar:hover {
+    filter: brightness(0.9);
+}
+
+/* Estilos para o logo principal */
+.main-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.main-logo-container i {
+    font-size: 5rem;
+    color: #CC0000; /* Vermelho mais forte SafePass */
+    margin-bottom: 15px;
+}
+
+.main-logo-container h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    color: #CC0000; /* Vermelho mais forte SafePass */
+    margin: 0;
+}
+
+/* Estilos para o checkbox personalizado */
+.campo-lembrar {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--cor-texto-primario);
+    font-size: 0.9rem;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--cor-fundo-input);
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    border-color: var(--cor-borda-input-focus);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--cor-primaria-urgencia);
+    border-color: var(--cor-primaria-urgencia);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}

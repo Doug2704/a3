@@ -1,0 +1,29 @@
+[
+  {
+    "id": "area001",
+    "nomeArea": "Data Center Alfa",
+    "descricao": "Servidores principais",
+    "ativos": [
+      { "id": "ativo_srv001", "nomeAtivo": "Servidor SRV-WEB-01" },
+      { "id": "ativo_sw001", "nomeAtivo": "Switch Core Principal" }
+    ]
+  },
+  {
+    "id": "area002",
+    "nomeArea": "Financeiro",
+    "descricao": "Departamento Financeiro",
+    "ativos": [
+      { "id": "ativo_pcfin01", "nomeAtivo": "Desktop Contabilidade" },
+      { "id": "ativo_impfin01", "nomeAtivo": "Impressora Financeiro" }
+    ]
+  },
+  {
+    "id": "area003",
+    "nomeArea": "Produção Linha 1",
+    "descricao": "Teste de descrição",
+    "ativos": [
+      { "id": "ativo_maquina01", "nomeAtivo": "Máquina de Produção 01" },
+      { "id": "ativo_maquina02", "nomeAtivo": "Máquina de Produção 02" }
+    ]
+  }
+]

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Novo Usuário - Incidex</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/admin/admin-layout.css">
+    <link rel="stylesheet" href="../../css/admin/cadastroUsuarioAdmin.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <button id="btn-alternar-tema" title="Alternar Tema">🌙</button> 
+    <button id="btn-toggle-sidebar" class="btn-toggle-sidebar">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div id="sidebar-placeholder"></div>
+
+    <div class="conteudo-principal-admin" id="conteudoPrincipalAdmin">
+        <header class="cabecalho-pagina-admin">
+            <h1><i class="fa-solid fa-user-plus"></i> Cadastrar Novo Usuário</h1>
+        </header>
+
+        <main class="pagina-cadastro-usuario-admin">
+            <form id="formCadastroUsuario" class="form-admin">
+                <div class="form-grupo">
+                    <label for="nomeCompleto">Nome Completo <span class="obrigatorio">*</span></label>
+                    <input type="text" id="nomeCompleto" name="nomeCompleto" required>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="email">Email <span class="obrigatorio">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="loginUsuario">Login <span class="obrigatorio">*</span></label>
+                    <input type="text" id="loginUsuario" name="loginUsuario" required>
+                </div>
+                
+                <div class="form-grupo">
+                    <label for="perfilUsuario">Perfil do Usuário <span class="obrigatorio">*</span></label>
+                    <select id="perfilUsuario" name="perfilUsuario" required>
+                        <option value="">Selecione um perfil...</option>
+                        <option value="operator">Operador</option>
+                        <option value="manager">Gerenciador</option>
+                        <option value="admin">Administrador</option> 
+                    </select>
+                </div>
+
+                <div class="form-grupo" id="grupoAreaUsuario">
+                    <label for="usuarioAreaId">Área do Usuário <span class="obrigatorio">*</span></label>
+                    <select id="usuarioAreaId" name="usuarioAreaId" required>
+                        <option value="">Selecione uma área...</option>
+                    </select>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="senhaUsuario">Senha <span class="obrigatorio">*</span></label>
+                    <input type="password" id="senhaUsuario" name="senhaUsuario" required minlength="6">
+                </div>
+
+                <div class="form-grupo">
+                    <label for="confirmarSenhaUsuario">Confirmar Senha <span class="obrigatorio">*</span></label>
+                    <input type="password" id="confirmarSenhaUsuario" name="confirmarSenhaUsuario" required minlength="6">
+                    <small id="msgErroSenha" class="mensagem-erro-form"></small>
+                </div>
+                
+                <div class="form-acoes">
+                    <button type="submit" class="btn-acao-principal">
+                        <i class="fa-solid fa-floppy-disk"></i> Salvar Usuário
+                    </button>
+                    <a href="usuarios.html" class="btn-acao-secundario">Cancelar</a>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script type="module" src="../../js/config.js"></script>
+    <script type="module" src="../../js/themeManager.js"></script>
+    <script type="module" src="../../js/authService.js"></script>
+    <script type="module" src="../../js/apiService.js"></script>
+    <script type="module" src="../../js/admin/adminPageSetup.js"></script>
+    <script type="module" src="../../js/admin/cadastroUsuarioAdmin.js"></script> 
+</body>
+</html>

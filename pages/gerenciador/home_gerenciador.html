@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Gerenciador - Incidex</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/gerenciador/gerenciador-layout.css">
+    <link rel="stylesheet" href="../../css/gerenciador/home_gerenciador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <button id="btn-toggle-sidebar" class="btn-toggle-sidebar">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <div id="sidebar-placeholder"></div>
+    <div class="conteudo-principal-gerenciador" id="conteudoPrincipalGerenciador">
+        <header class="cabecalho-saudacao-gerenciador">
+            <h1 class="saudacao-gerenciador-titulo" id="greeting">Olá, Gerenciador!</h1>
+        </header>
+        <div class="container-toggler-responsabilidades">
+            <h2 class="titulo-responsabilidades">Responsabilidades do Gerenciador</h2>
+            <button id="btn-toggle-responsabilidades" class="btn-toggler-responsabilidades" title="Mostrar/Ocultar Papel do Gerenciador">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+        <section class="card-boas-vindas-centralizado" id="cardIntroducaoGerenciador" style="display: none;">
+            <p><strong>Liderança com visão. Gestão com propósito.</strong></p>
+            <p>Você é quem garante que a empresa siga em frente — mesmo diante dos maiores desafios.</p>
+            <h3 class="subtitulo-secao-intro">Como gestor, seu papel é estratégico:</h3>
+            <p>Alinhar cada plano de ação aos objetivos da organização, proteger o negócio e tomar decisões baseadas em dados confiáveis.</p>
+            <h3 class="subtitulo-secao-intro">Você será responsável por:</h3>
+            <ul>
+                <li>Monitorar indicadores e resultados em tempo real</li>
+                <li>Gerar relatórios claros para decisões estratégicas</li>
+                <li>Ajustar planos com agilidade sempre que necessário</li>
+                <li>Antecipar riscos e garantir continuidade operacional</li>
+            </ul>
+            <p>Com uma visão completa dos planos em andamento, você tem o controle necessário para agir rápido, reduzir impactos e manter tudo funcionando.</p>
+            <p><strong>Seu trabalho constrói resiliência.</strong></p>
+            <p>Mais que reagir a crises, você prepara a empresa para o futuro — segura, forte e pronta para crescer.</p>
+        </section>
+        <main class="painel-gerenciador-home">
+            <section class="secao-cards-funcionalidades">
+                <h2>Ações Rápidas</h2>
+                <div class="container-cards-funcionalidades">
+                     <a href="formulario_plano_acao.html" class="card-funcionalidade">
+                        <i class="fa-solid fa-file-signature"></i>
+                        <h3>Criar Plano de Ação</h3>
+                        <p>Defina novos planos para gerenciar incidentes.</p>
+                    </a>
+                    <a href="visualizar_planos_gerenciador.html" class="card-funcionalidade">
+                        <i class="fa-solid fa-list-check"></i>
+                        <h3>Ver Planos de Ação</h3>
+                        <p>Acompanhe o status e detalhes dos planos existentes.</p>
+                    </a>
+                    <a href="visualizar_areas_ativos_gerenciador.html" class="card-funcionalidade">
+                        <i class="fa-solid fa-sitemap"></i>
+                        <h3>Áreas e Ativos</h3>
+                        <p>Consulte as áreas e ativos cadastrados.</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button id="btn-alternar-tema" title="Alternar Tema">🌙</button>
+
+    <script type="module" src="../../js/config.js"></script>
+    <script type="module" src="../../js/themeManager.js"></script>
+    <script type="module" src="../../js/authService.js"></script>
+    <script type="module" src="../../js/gerenciador/gerenciadorPageSetup.js"></script>
+    <script type="module" src="../../js/gerenciador/homeGerenciador.js"></script>
+</body>
+</html>

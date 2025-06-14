@@ -1,0 +1,42 @@
+[
+    {
+        "id": "log001",
+        "timestamp": "2025-05-29T10:00:00Z",
+        "level": "INFO",
+        "usuario": "admin",
+        "acao": "Login bem-sucedido",
+        "detalhes": "Usuário 'admin' acessou o sistema."
+    },
+    {
+        "id": "log002",
+        "timestamp": "2025-05-29T10:05:23Z",
+        "level": "INFO",
+        "usuario": "admin",
+        "acao": "Criação de Área",
+        "detalhes": "Área 'Bloco A - Térreo' criada com sucesso."
+    },
+    {
+        "id": "log003",
+        "timestamp": "2025-05-29T10:15:10Z",
+        "level": "WARN",
+        "usuario": "gerente01",
+        "acao": "Tentativa de acesso não autorizado",
+        "detalhes": "Usuário 'gerente01' tentou acessar funcionalidade restrita 'Excluir Usuário'."
+    },
+    {
+        "id": "log004",
+        "timestamp": "2025-05-29T10:20:00Z",
+        "level": "INFO",
+        "usuario": "admin",
+        "acao": "Cadastro de Usuário",
+        "detalhes": "Usuário 'operador_sala_servidores' cadastrado."
+    },
+    {
+        "id": "log005",
+        "timestamp": "2025-05-29T10:30:00Z",
+        "level": "ERROR",
+        "usuario": "sistema",
+        "acao": "Falha ao conectar ao serviço de e-mail",
+        "detalhes": "Não foi possível enviar notificação de novo incidente. Erro: Timeout."
+    }
+]

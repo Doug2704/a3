@@ -1,0 +1,107 @@
+/* css/admin/cadastroUsuarioAdmin.css */
+
+.pagina-cadastro-usuario-admin {
+    padding: 20px;
+    max-width: 700px; /* Limita a largura do container do formulário */
+    margin: 0 auto;   /* Centraliza o container do formulário */
+}
+
+.form-admin {
+    background-color: var(--cor-fundo-elemento);
+    padding: 25px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda-elemento);
+    box-shadow: 0 2px 5px var(--cor-sombra-elemento);
+}
+
+.form-admin .form-grupo {
+    margin-bottom: 20px;
+}
+
+.form-admin label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600; /* Deixa o label um pouco mais forte */
+    font-size: 0.9rem;
+    color: var(--cor-texto-primario);
+}
+
+.form-admin input[type="text"],
+.form-admin input[type="email"],
+.form-admin input[type="password"],
+.form-admin select {
+    width: 100%;
+    padding: 10px 12px; /* Padding ajustado */
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 5px;
+    font-size: 0.95rem; /* Tamanho da fonte do input */
+    background-color: var(--cor-fundo-input);
+    color: var(--cor-texto-input);
+    transition: var(--transicao-tema), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+/* Select especificamente */
+.form-admin select {
+    appearance: none; /* Remove aparência padrão do select */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.9z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px 10px;
+    padding-right: 30px; /* Espaço para a seta customizada */
+}
+/* Cor da seta do select no dark mode */
+body.dark-mode .form-admin select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23adb5bd%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.9z%22%2F%3E%3C%2Fsvg%3E');
+}
+
+
+.form-admin input:focus,
+.form-admin select:focus {
+    border-color: var(--cor-borda-input-focus);
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Usar a cor de foco do tema */
+}
+
+.mensagem-erro-form {
+    display: block; /* Para ocupar a linha e ter margem */
+    font-size: 0.8rem;
+    color: var(--cor-primaria-urgencia);
+    margin-top: 5px;
+}
+
+.form-acoes {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end; /* Alinha botões à direita */
+    gap: 10px; /* Espaço entre os botões */
+}
+
+/* Estilos para botões principais e secundários (podem ir para admin-layout.css se reusados) */
+.form-admin .btn-acao-principal,
+.form-admin .btn-acao-secundario {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-admin .btn-acao-principal {
+    background-color: var(--cor-primaria-urgencia);
+    color: var(--cor-texto-botao-primario-urgencia);
+    border: 1px solid var(--cor-primaria-urgencia);
+}
+.form-admin .btn-acao-principal:hover {
+    filter: brightness(0.9);
+}
+
+.form-admin .btn-acao-secundario {
+    background-color: var(--cor-botao-fundo); /* Botão genérico */
+    color: var(--cor-botao-texto);
+    border: 1px solid var(--cor-botao-borda);
+}
+.form-admin .btn-acao-secundario:hover {
+    background-color: var(--cor-botao-fundo-hover);
+    border-color: var(--cor-botao-borda-hover);
+}

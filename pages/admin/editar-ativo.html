@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Ativo - Incidex</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/admin/admin-layout.css">
+    <link rel="stylesheet" href="../../css/admin/formulariosAdmin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <button id="btn-alternar-tema" title="Alternar Tema">🌙</button> 
+    <button id="btn-toggle-sidebar" class="btn-toggle-sidebar">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <div id="sidebar-placeholder"></div>
+    <div class="conteudo-principal-admin" id="conteudoPrincipalAdmin">
+        <header class="cabecalho-pagina-admin">
+            <h1><i class="fa-solid fa-cube"></i> Editar Ativo</h1>
+        </header>
+        <main class="pagina-formulario-admin" id="main-content">
+            <p class="carregando-dados">Carregando dados do ativo...</p>
+            <form id="formEditarAtivo" class="form-admin" style="display: none;">
+                <div class="form-grupo">
+                    <label for="nomeAtivo">Nome do Ativo</label>
+                    <input type="text" id="nomeAtivo" name="name" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="areaPaiAtivo">Área do Ativo</label>
+                    <select id="areaPaiAtivo" name="responsibleAreaId" required>
+                        <option value="">Carregando áreas...</option>
+                    </select>
+                </div>
+                <div class="form-acoes">
+                    <button type="submit" class="btn-acao-principal">
+                        <i class="fa-solid fa-floppy-disk"></i> Salvar Alterações
+                    </button>
+                    <a href="areas-ativos.html" class="btn-acao-secundario">Cancelar</a>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script type="module" src="../../js/config.js"></script>
+    <script type="module" src="../../js/themeManager.js"></script>
+    <script type="module" src="../../js/authService.js"></script>
+    <script type="module" src="../../js/apiService.js"></script>
+    <script type="module" src="../../js/admin/adminPageSetup.js"></script>
+    <script type="module" src="../../js/admin/editarAtivoAdmin.js"></script> 
+</body>
+</html>

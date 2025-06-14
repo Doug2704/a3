@@ -1,0 +1,148 @@
+.cabecalho-saudacao-gerenciador {
+    text-align: center;
+    padding: 20px 15px 10px 15px;
+    margin-bottom: 5px;
+}
+.saudacao-gerenciador-titulo {
+    font-size: 2rem; 
+    color: var(--cor-texto-primario); 
+    font-weight: 600; 
+}
+
+.container-toggler-responsabilidades {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto 25px auto;
+    cursor: default;
+    border-bottom: 1px solid var(--cor-borda-elemento);
+    padding-bottom: 15px;
+}
+.titulo-responsabilidades {
+    font-size: 1.1rem;
+    color: var(--cor-texto-secundario);
+    margin: 0;
+    font-weight: 600;
+}
+.btn-toggler-responsabilidades {
+    background: none;
+    border: none;
+    padding: 5px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--cor-texto-secundario);
+    transition: transform 0.3s ease-in-out, color 0.2s ease;
+}
+.btn-toggler-responsabilidades:hover {
+    color: var(--cor-texto-primario);
+}
+.btn-toggler-responsabilidades.aberto i {
+    transform: rotate(180deg);
+}
+
+.card-boas-vindas-centralizado {
+    background-color: var(--cor-fundo-elemento);
+    color: var(--cor-texto-secundario);
+    padding: 25px 30px;
+    margin: -15px auto 30px auto; 
+    border-radius: 0 0 8px 8px;
+    border: 1px solid var(--cor-borda-elemento);
+    border-top: none;
+    box-shadow: 0 2px 4px var(--cor-sombra-elemento);
+    max-width: 700px; 
+    text-align: left; 
+}
+.card-boas-vindas-centralizado p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+.card-boas-vindas-centralizado ul {
+    list-style-position: inside;
+    padding-left: 0; 
+    margin-bottom: 10px;
+    margin-left: 10px; 
+}
+.card-boas-vindas-centralizado ul li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+.card-boas-vindas-centralizado p:first-of-type,
+.card-boas-vindas-centralizado p:last-of-type {
+    font-weight: 600;
+    color: var(--cor-texto-primario);
+}
+.card-boas-vindas-centralizado p:first-of-type {
+    font-size: 1.1em;
+}
+.card-boas-vindas-centralizado .subtitulo-secao-intro {
+    font-size: 1.1em;
+    color: var(--cor-texto-primario);
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.painel-gerenciador-home { 
+    padding: 0 20px 40px 20px;
+}
+
+.secao-cards-funcionalidades {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.secao-cards-funcionalidades h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px; 
+    color: var(--cor-texto-primario);
+    text-align: center;
+    font-weight: 600;
+}
+.container-cards-funcionalidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px; 
+}
+.card-funcionalidade {
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    background-color: var(--cor-fundo-elemento);
+    padding: 25px; 
+    border-radius: 10px; 
+    border: 1px solid var(--cor-borda-elemento);
+    box-shadow: 0 3px 6px var(--cor-sombra-elemento); 
+    text-decoration: none;
+    color: var(--cor-texto-secundario);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+.card-funcionalidade:hover {
+    transform: translateY(-6px); 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.12); 
+    border-color: var(--cor-primaria-urgencia);
+}
+.card-funcionalidade i {
+    font-size: 2.8rem; 
+    color: var(--cor-primaria-urgencia); 
+    margin-bottom: 18px; 
+    display: block;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+.card-funcionalidade:hover i {
+    transform: scale(1.1);
+}
+.card-funcionalidade h3 {
+    font-size: 1.25rem; 
+    color: var(--cor-texto-primario);
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+.card-funcionalidade p {
+    font-size: 1rem; 
+    line-height: 1.7; 
+    text-align: center;
+    flex-grow: 1; 
+}

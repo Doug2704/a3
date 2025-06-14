@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Admin - Incidex</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/admin/admin-layout.css">
+    <link rel="stylesheet" href="../../css/admin/homeAdmin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <button id="btn-alternar-tema" title="Alternar Tema"><i class="fas fa-moon"></i></button> 
+    <button id="btn-toggle-sidebar" class="btn-toggle-sidebar">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <div id="sidebar-placeholder"></div>
+    <div class="conteudo-principal-admin" id="conteudoPrincipalAdmin">
+        <header class="cabecalho-saudacao-admin">
+            <h1 class="saudacao-admin-titulo">Olá, <span id="nome-admin-logado">administrador</span>!</h1>
+        </header>
+        <div class="container-toggler-responsabilidades">
+            <h2 class="titulo-responsabilidades">Responsabilidades do Administrador</h2>
+            <button id="btn-toggle-responsabilidades" class="btn-toggler-responsabilidades" title="Mostrar/Ocultar Responsabilidades">
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+        <section class="card-boas-vindas-centralizado" id="cardBoasVindasAdmin" style="display: none;">
+            <p>Você organiza. Os outros executam.<br>
+            Como Administrador da ferramenta, seu papel é garantir que a estrutura da plataforma esteja pronta para quem precisa agir.</p>
+            <p>Você é responsável por:</p>
+            <ul>
+                <li>Cadastrar e gerenciar usuários e seus acessos</li>
+                <li>Organizar áreas, equipes e responsabilidades</li>
+                <li>Manter atualizada a base de ativos e informações da empresa</li>
+            </ul>
+            <p>Você não acompanha os planos, nem atua diretamente nas respostas a incidentes — mas sua organização é o que permite que tudo funcione corretamente.</p>
+            <p>Você mantém a casa em ordem.<br>
+            Com uma estrutura bem configurada, cada usuário acessa o que precisa, no momento certo, com segurança e eficiência.</p>
+            <p>Seu trabalho garante a base para que analistas e gestores atuem com precisão.</p>
+        </section>
+        <main class="painel-admin-home">
+            <section class="secao-kpis" id="secao-kpis-admin">
+                <div class="kpi-card"><h3>Usuários Cadastrados</h3><p id="kpi-usuarios-cadastrados">-</p></div>
+                <div class="kpi-card"><h3>Áreas Criadas</h3><p id="kpi-areas">-</p></div>
+                <div class="kpi-card"><h3>Ativos Criados</h3><p id="kpi-ativos">-</p></div>
+            </section>
+            <section class="secao-cards-funcionalidades">
+                <h2>Ações Rápidas</h2>
+                <div class="container-cards-funcionalidades">
+                    <a href="usuarios.html" class="card-funcionalidade"><i class="fa-solid fa-users-gear"></i><h3>Gerenciar Usuários</h3><p>Visualizar, cadastrar e excluir usuários.</p></a>
+                    <a href="areas-ativos.html" class="card-funcionalidade"><i class="fa-solid fa-object-group"></i><h3>Gerenciar Áreas/Ativos</h3><p>Criar e remover áreas e seus ativos.</p></a>
+                    <a href="logs.html" class="card-funcionalidade"><i class="fa-solid fa-file-lines"></i><h3>Logs do Sistema</h3><p>Visualizar os registros de atividades do sistema.</p></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="../../js/config.js"></script>
+    <script type="module" src="../../js/themeManager.js"></script>
+    <script type="module" src="../../js/authService.js"></script>
+    <script type="module" src="../../js/apiService.js"></script>
+    <script type="module" src="../../js/admin/adminPageSetup.js"></script>
+    <script type="module" src="../../js/admin/homeAdmin.js"></script>
+</body>
+</html>

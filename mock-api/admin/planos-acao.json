@@ -1,0 +1,167 @@
+[
+  {
+    "idPlano": "plano_001",
+    "nomePlano": "Contenção de Incidente de Segurança de Rede",
+    "descricaoPlano": "Plano de resposta rápida para mitigar e analisar o incidente de segurança na rede corporativa.",
+    "areaResponsavelPlano": "area001", 
+    "areasImpactadas": ["area001", "area002"],
+    "ativosImpactados": ["ativo_srv001", "ativo_sw001", "ativo_pcfin01"],
+    "descricaoIncidente": "Detectada atividade anômala na rede interna, possível acesso não autorizado ao servidor SRV-WEB-01.",
+    "nivelUrgencia": "Alto",
+    "nivelImpacto": "Alto",
+    "statusGeralPlano": "Em Andamento", 
+    "criadoEm": "2025-05-20T10:00:00Z",
+    "criadoPor": "Gerente Silva",
+    "etapas": [
+      {
+        "idEtapa": "etapa_001_01",
+        "nomeEtapa": "Isolar Segmento de Rede Afetado",
+        "ordem": 1,
+        "areaResponsavelEtapa": "area001",
+        "descricaoEtapaDetalhada": "Desconectar fisicamente ou via firewall os servidores e estações de trabalho do segmento de rede comprometido para evitar propagação.",
+        "tempoRecomendadoSegundos": 1800,
+        "status": "CONCLUIDO",
+        "areasImpactadasEtapa": ["Rede Corporativa"],
+        "ativosImpactadosEtapa": ["Switch Core Principal"],
+        "tempoIniciadoTimestamp": 1716199200000, 
+        "tempoDecorridoSegundos": 1750 
+      },
+      {
+        "idEtapa": "etapa_001_02",
+        "nomeEtapa": "Análise de Logs e Identificação da Ameaça",
+        "ordem": 2,
+        "areaResponsavelEtapa": "area001",
+        "descricaoEtapaDetalhada": "Coletar e analisar logs...",
+        "tempoRecomendadoSegundos": 7200,
+        "status": "EM_ANDAMENTO",
+        "areasImpactadasEtapa": ["Servidores Aplicação"],
+        "ativosImpactadosEtapa": ["Servidor SRV-WEB-01", "Servidor de Logs"],
+        "tempoIniciadoTimestamp": 1250, 
+        "tempoDecorridoSegundos": 0 
+      },
+      {
+        "idEtapa": "etapa_001_03",
+        "nomeEtapa": "Remoção da Ameaça e Patch de Segurança",
+        "ordem": 3,
+        "areaResponsavelEtapa": "area001",
+        "descricaoEtapaDetalhada": "Aplicar procedimentos para remover o malware/acesso indevido e aplicar patches de segurança nas vulnerabilidades exploradas.",
+        "tempoRecomendadoSegundos": 3600,
+        "status": "NAO_INICIADO",
+        "areasImpactadasEtapa": ["Servidores Aplicação"],
+        "ativosImpactadosEtapa": ["Servidor SRV-WEB-01"],
+        "tempoIniciadoTimestamp": null,
+        "tempoDecorridoSegundos": 0
+      },
+      {
+        "idEtapa": "etapa_001_04",
+        "nomeEtapa": "Restauração de Serviços e Monitoramento",
+        "ordem": 4,
+        "areaResponsavelEtapa": "area001",
+        "descricaoEtapaDetalhada": "Restaurar os serviços afetados gradualmente e monitorar intensivamente a rede por qualquer sinal de reincidência.",
+        "tempoRecomendadoSegundos": 10800,
+        "status": "NAO_INICIADO",
+        "areasImpactadasEtapa": ["Servidores Aplicação", "Rede Corporativa"],
+        "ativosImpactadosEtapa": ["Servidor SRV-WEB-01", "Switch Core Principal"],
+        "tempoIniciadoTimestamp": null,
+        "tempoDecorridoSegundos": 0
+      }
+    ]
+  },
+  {
+    "idPlano": "plano_002",
+    "nomePlano": "Manutenção Preventiva Trimestral - Data Center",
+    "descricaoPlano": "Execução das rotinas de manutenção preventiva nos equipamentos do Data Center Alfa.",
+    "areaResponsavelPlano": "area001",
+    "areasImpactadas": ["area001"],
+    "ativosImpactados": ["ativo_srv001", "ativo_sw001"],
+    "descricaoIncidente": "N/A - Manutenção Programada",
+    "nivelUrgencia": "Medio",
+    "nivelImpacto": "Medio",
+    "statusGeralPlano": "Não Iniciado",
+    "criadoEm": "2025-06-01T09:00:00Z",
+    "criadoPor": "Admin Sistema",
+    "etapas": [
+      {
+        "idEtapa": "etapa_002_01",
+        "nomeEtapa": "Verificação de Backups",
+        "ordem": 1,
+        "areaResponsavelEtapa": "area001",
+        "descricaoEtapaDetalhada": "Confirmar integridade e conclusão dos últimos backups de todos os servidores críticos.",
+        "tempoRecomendadoSegundos": 3600,
+        "status": "NAO_INICIADO",
+        "areasImpactadasEtapa": [],
+        "ativosImpactadosEtapa": ["Servidor de Backup"],
+        "tempoIniciadoTimestamp": null,
+        "tempoDecorridoSegundos": 0
+      },
+      {
+        "idEtapa": "etapa_002_02",
+        "nomeEtapa": "Atualização de Firmware de Switches",
+        "ordem": 2,
+        "areaResponsavelEtapa": "area001",
+        "descricaoEtapaDetalhada": "Aplicar atualizações de firmware recomendadas pelo fabricante nos switches core e de acesso.",
+        "tempoRecomendadoSegundos": 7200,
+        "status": "NAO_INICIADO",
+        "areasImpactadasEtapa": ["Rede Corporativa"],
+        "ativosImpactadosEtapa": ["Switch Core Principal", "Switches de Acesso"],
+        "tempoIniciadoTimestamp": null,
+        "tempoDecorridoSegundos": 0
+      }
+    ]
+  },
+  {
+    "idPlano": "plano_003",
+    "nomePlano": "Falha no Sistema de Ar Condicionado - Sala de Servidores Beta",
+    "descricaoPlano": "Plano de contingência para falha no sistema de ar condicionado da Sala de Servidores Beta.",
+    "areaResponsavelPlano": "area003", 
+    "areasImpactadas": ["area003"],
+    "ativosImpactados": ["ativo_srvbeta01", "ativo_stgbeta01"], 
+    "descricaoIncidente": "Sistema de ar condicionado principal da Sala de Servidores Beta parou de funcionar. Temperatura subindo.",
+    "nivelUrgencia": "Alto",
+    "nivelImpacto": "Alto",
+    "statusGeralPlano": "Concluído",
+    "criadoEm": "2025-04-15T14:30:00Z",
+    "criadoPor": "Gerente Operações",
+    "etapas": [
+      {
+        "idEtapa": "etapa_003_01",
+        "nomeEtapa": "Acionar Ar Condicionado Reserva",
+        "ordem": 1,
+        "areaResponsavelEtapa": "area003",
+        "descricaoEtapaDetalhada": "Ligar imediatamente o sistema de ar condicionado de contingência.",
+        "tempoRecomendadoSegundos": 300,
+        "status": "CONCLUIDO",
+        "areasImpactadasEtapa": ["Sala de Servidores Beta"],
+        "ativosImpactadosEtapa": [],
+        "tempoIniciadoTimestamp": 1713191400000,
+        "tempoDecorridoSegundos": 280
+      },
+      {
+        "idEtapa": "etapa_003_02",
+        "nomeEtapa": "Monitorar Temperatura da Sala",
+        "ordem": 2,
+        "areaResponsavelEtapa": "area003",
+        "descricaoEtapaDetalhada": "Acompanhar a redução da temperatura e garantir estabilização dentro dos limites seguros.",
+        "tempoRecomendadoSegundos": 1800,
+        "status": "CONCLUIDO",
+        "areasImpactadasEtapa": ["Sala de Servidores Beta"],
+        "ativosImpactadosEtapa": [],
+        "tempoIniciadoTimestamp": 1713191700000,
+        "tempoDecorridoSegundos": 1700
+      },
+      {
+        "idEtapa": "etapa_003_03",
+        "nomeEtapa": "Acionar Suporte Técnico do Ar Condicionado Principal",
+        "ordem": 3,
+        "areaResponsavelEtapa": "area003",
+        "descricaoEtapaDetalhada": "Contatar a empresa de manutenção para reparo do sistema principal.",
+        "tempoRecomendadoSegundos": 900,
+        "status": "CONCLUIDO",
+        "areasImpactadasEtapa": [],
+        "ativosImpactadosEtapa": [],
+        "tempoIniciadoTimestamp": 1713193500000,
+        "tempoDecorridoSegundos": 850
+      }
+    ]
+  }
+]

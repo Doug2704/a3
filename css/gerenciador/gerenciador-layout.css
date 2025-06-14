@@ -1,0 +1,191 @@
+/* css/gerenciador/gerenciador-layout.css */
+
+body {
+    overflow-x: hidden; 
+    /* Background e color principal vêm do global.css e suas variáveis de tema */
+    transition: var(--transicao-tema); /* Para suavizar a troca de tema no body */
+}
+
+/* Botão de Toggle da Sidebar (geralmente o mesmo do admin) */
+.btn-toggle-sidebar {
+    position: fixed;
+    top: 15px; /* Ajuste conforme necessário, considerando o header principal ausente */
+    left: 15px;
+    z-index: 1005; 
+    background-color: var(--cor-fundo-elemento);
+    color: var(--cor-texto-primario);
+    border: 1px solid var(--cor-borda-elemento);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: var(--transicao-tema), left 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.sidebar-gerenciador { /* Classe específica para a sidebar do gerenciador */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px; 
+    height: 100vh;
+    background-color: var(--cor-fundo-elemento);
+    border-right: 1px solid var(--cor-borda-elemento);
+    box-shadow: 3px 0 8px rgba(0,0,0,0.1); 
+    padding: 15px; 
+    display: flex;
+    flex-direction: column;
+    z-index: 1000; 
+    transform: translateX(-100%); 
+    transition: transform 0.3s ease-in-out, var(--transicao-tema);
+}
+
+.sidebar-gerenciador.aberta {
+    transform: translateX(0); 
+}
+
+/* Estilos do cabeçalho, navegação e rodapé da sidebar (podem ser os mesmos do admin) */
+.sidebar-gerenciador .sidebar-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--cor-borda-elemento);
+    text-align: center;
+    transition: var(--transicao-tema);
+}
+.sidebar-gerenciador .sidebar-header h2 {
+    font-size: 1.6rem; 
+    color: var(--cor-primaria-urgencia); /* Cor de destaque para o título na sidebar */
+    font-weight: 600;
+    transition: var(--transicao-tema);
+}
+
+.sidebar-gerenciador .sidebar-nav {
+    flex-grow: 1; 
+    overflow-y: auto; 
+}
+.sidebar-gerenciador .sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar-gerenciador .sidebar-nav li a {
+    display: flex; 
+    align-items: center;
+    padding: 13px 15px; 
+    text-decoration: none;
+    color: var(--cor-texto-secundario);
+    border-radius: 6px; 
+    margin-bottom: 6px; 
+    font-weight: 500; 
+    transition: background-color 0.2s ease, color 0.2s ease, var(--transicao-tema);
+}
+.sidebar-gerenciador .sidebar-nav li a i {
+    margin-right: 12px; 
+    width: 22px; 
+    text-align: center;
+    font-size: 0.95rem; 
+}
+.sidebar-gerenciador .sidebar-nav li a:hover,
+.sidebar-gerenciador .sidebar-nav li a.ativo { /* Classe 'ativo' para o link da página atual */
+    background-color: var(--cor-primaria-urgencia);
+    color: var(--cor-texto-botao-primario-urgencia);
+}
+
+.sidebar-gerenciador .sidebar-footer {
+    margin-top: auto; 
+    padding-top: 15px;
+    border-top: 1px solid var(--cor-borda-elemento);
+    transition: var(--transicao-tema);
+}
+.sidebar-gerenciador .sidebar-footer .btn-sair {
+    width: 100%;
+    background-color: var(--cor-botao-fundo); 
+    color: var(--cor-botao-texto);
+    border: 1px solid var(--cor-botao-borda); /* Adicionado para consistência com global.css */
+    text-align: left; 
+    padding: 12px 15px; 
+    display: flex; 
+    align-items: center;
+    border-radius: 5px; /* Consistência com global.css */
+    font-size: 1rem; /* Consistência com global.css */
+    transition: var(--transicao-tema); /* Herda do global, mas pode ser específico */
+}
+.sidebar-gerenciador .sidebar-footer .btn-sair:hover {
+    background-color: var(--cor-botao-fundo-hover);
+    border-color: var(--cor-botao-borda-hover);
+}
+.sidebar-gerenciador .sidebar-footer .btn-sair i {
+    margin-right: 10px; 
+}
+
+/* Conteúdo Principal */
+.conteudo-principal-gerenciador {
+    padding-left: 0; /* Começa sem margem, ajustado pelo JS quando a sidebar abre */
+    margin-left: 0;  /* Para telas menores, ou quando sidebar está fechada */
+    padding-top: 20px; /* Espaçamento do topo da página */
+    padding-right: 20px; /* Espaçamento lateral */
+    padding-bottom: 20px; /* Espaçamento inferior */
+    transition: margin-left 0.3s ease-in-out; 
+    width: 100%; 
+    box-sizing: border-box; /* Garante que padding não aumente a largura total */
+}
+
+/* Estilo para o cabeçalho das páginas internas do gerenciador */
+.cabecalho-pagina-gerenciador {
+    padding: 15px 0px; /* Ajustado padding, sem padding lateral pois o container já tem */
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--cor-borda-elemento);
+    text-align: center; /* Para centralizar o H1 */
+    transition: var(--transicao-tema);
+}
+
+.cabecalho-pagina-gerenciador h1 {
+    font-size: 1.8rem;
+    color: var(--cor-texto-primario);
+    display: inline-flex; /* Para que o text-align do pai funcione e alinhe com ícone */
+    align-items: center;
+    /* justify-content: center; não é mais necessário se o pai tem text-align: center */
+    font-weight: 600; 
+    transition: var(--transicao-tema);
+}
+
+.cabecalho-pagina-gerenciador h1 i {
+    margin-right: 10px;
+    color: var(--cor-primaria-urgencia); 
+    font-size: 1.6rem; 
+    transition: var(--transicao-tema);
+}
+
+/* Adaptação para quando a sidebar estiver aberta */
+body.sidebar-gerenciador-aberta .conteudo-principal-gerenciador {
+    margin-left: 260px; /* Mesma largura da sidebar */
+}
+body.sidebar-gerenciador-aberta .btn-toggle-sidebar {
+    left: 275px; /* (largura da sidebar + 15px de espaçamento) */
+}
+
+
+/* Responsividade para o layout do gerenciador */
+@media (max-width: 768px) {
+    .sidebar-gerenciador {
+        /* Em telas pequenas, a sidebar ainda desliza da esquerda */
+        width: 240px; /* Pode reduzir um pouco a largura */
+    }
+    body.sidebar-gerenciador-aberta .conteudo-principal-gerenciador {
+        margin-left: 0; /* Conteúdo não se move, sidebar sobrepõe */
+    }
+     body.sidebar-gerenciador-aberta .btn-toggle-sidebar {
+        left: 255px; /* (largura da sidebar reduzida + 15px) */
+    }
+
+    .conteudo-principal-gerenciador {
+        padding-left: 20px; /* Garante padding lateral mesmo com sidebar sobrepondo */
+        /* margin-left já é 0 */
+    }
+    .btn-toggle-sidebar {
+        /* Mantém posição, mas pode ser ajustado se necessário */
+    }
+}

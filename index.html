@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafePass - Acesso ao Sistema</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/login-animation.css">
+</head>
+<body>
+    <button id="btn-alternar-tema" title="Alternar Tema"><i class="fas fa-moon"></i></button>
+    <main class="conteudo-login">
+        <div class="main-logo-container">
+            <i class="fas fa-shield-alt"></i>
+            <h1 class="titulo-principal">SafePass</h1>
+        </div>
+        <div class="card-login">
+            <h2>Acesso ao sistema</h2>
+            <p class="subtitulo-card">Digite seus dados para acessar o sistema</p>
+            <form id="form-login">
+                <div class="campo-formulario">
+                    <label for="login">Login</label>
+                    <input type="text" id="login" name="login" required>
+                </div>
+                <div class="campo-formulario">
+                    <label for="senha">Senha</label>
+                    <div class="campo-senha-container">
+                        <input type="password" id="senha" name="senha" required>
+                        <button type="button" id="btn-mostrar-senha" class="btn-mostrar-senha" title="Mostrar/Ocultar Senha">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="campo-formulario campo-lembrar">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="manter-conectado" name="manter-conectado">
+                        <span class="checkmark"></span>
+                        Manter conectado
+                    </label>
+                </div>
+                <button type="submit" class="btn-acessar">ACESSAR</button>
+            </form>
+        </div>
+    </main>
+
+    <script type="module" src="js/mainApp.js" defer></script>
+    <script type="module" src="js/login.js" defer></script>
+</body>
+</html>
+

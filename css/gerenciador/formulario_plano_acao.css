@@ -1,0 +1,385 @@
+/* css/gerenciador/formulario_plano_acao.css - VERSÃO COMPLETA ATUALIZADA */
+
+.pagina-formulario-plano {
+    padding: 20px;
+    max-width: 900px; 
+    margin: 0 auto; 
+}
+
+.form-styled {
+    background-color: var(--cor-fundo-elemento);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda-elemento);
+    box-shadow: 0 2px 8px var(--cor-sombra-elemento);
+    transition: var(--transicao-tema);
+}
+
+.form-styled fieldset {
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 25px;
+    transition: var(--transicao-tema);
+}
+
+.form-styled legend {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--cor-texto-primario);
+    padding: 0 10px;
+    margin-left: 5px; 
+    transition: var(--transicao-tema);
+}
+
+.form-grupo {
+    margin-bottom: 20px;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--cor-texto-secundario);
+    font-size: 0.95rem;
+    transition: var(--transicao-tema);
+}
+
+.form-grupo .obrigatorio {
+    color: var(--cor-primaria-urgencia);
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+.form-styled input[type="text"],
+.form-styled input[type="number"],
+.form-styled textarea,
+.form-styled select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--cor-fundo-input);
+    color: var(--cor-texto-input);
+    box-sizing: border-box; 
+    transition: var(--transicao-tema);
+}
+
+.form-styled input[type="text"]:focus,
+.form-styled input[type="number"]:focus,
+.form-styled textarea:focus,
+.form-styled select:focus {
+    border-color: var(--cor-borda-input-focus);
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    outline: none;
+}
+
+.form-styled textarea {
+    min-height: 100px;
+    resize: vertical; 
+}
+
+.form-linha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    margin-bottom: 20px;
+}
+
+.form-linha .form-grupo.metades {
+    flex: 1;
+    min-width: calc(50% - 10px); 
+    margin-bottom: 0; 
+}
+
+/* Container original para multi-seleção (agora preenchido pelo custom-multiselect-wrapper) */
+.multi-selecao-container {
+    /* Pode não precisar de estilos diretos se o wrapper cuidar de tudo */
+    /* min-height: 80px; Removido pois o trigger controla a altura inicial */
+    transition: var(--transicao-tema);
+}
+
+/* Estilos para o Componente Multi-Select Customizado */
+.custom-multiselect-wrapper {
+    position: relative; 
+    width: 100%;
+    margin-top: 5px; /* Pequena margem acima do botão trigger */
+}
+
+.multiselect-trigger {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 5px;
+    background-color: var(--cor-fundo-input);
+    font-size: 1rem; /* Para consistência com outros inputs */
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transicao-tema);
+    color: var(--cor-texto-input); /* Cor do texto do placeholder/selecionados */
+}
+.multiselect-trigger:focus,
+.multiselect-trigger:focus-visible { /* :focus-visible para melhor acessibilidade */
+    border-color: var(--cor-borda-input-focus);
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    outline: none;
+}
+
+.multiselect-trigger-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-grow: 1; /* Permite que o texto ocupe o espaço disponível */
+    /* A cor é herdada do .multiselect-trigger */
+}
+.multiselect-trigger-text.has-selection {
+    /* A cor pode ser alterada se houver seleção, mas herdar já é bom */
+    /* color: var(--cor-texto-primario); */
+    font-style: normal; /* Garante que não fique itálico se o placeholder for */
+}
+
+
+.multiselect-arrow {
+    margin-left: 10px;
+    font-size: 0.8em; /* Tamanho da seta */
+    transition: transform 0.2s ease-in-out;
+}
+
+.multiselect-dropdown {
+    display: none; /* Começa escondido */
+    position: absolute;
+    top: calc(100% + 2px); 
+    left: 0;
+    right: 0;
+    background-color: var(--cor-fundo-elemento);
+    border: 1px solid var(--cor-borda-input-focus); 
+    border-top: 1px solid var(--cor-borda-elemento); /* Borda superior normal */
+    border-radius: 0 0 5px 5px;
+    max-height: 220px; /* Altura máxima da lista de opções */
+    overflow-y: auto;
+    z-index: 1050; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+    transition: var(--transicao-tema);
+}
+
+.multiselect-dropdown .checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 5px; /* Espaçamento interno dos itens da lista */
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, var(--transicao-tema);
+    border-radius: 3px;
+}
+.multiselect-dropdown .checkbox-item:hover {
+    background-color: var(--cor-fundo-pagina); 
+}
+
+.multiselect-dropdown .checkbox-item input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.multiselect-dropdown .checkbox-item label {
+    font-weight: normal;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    color: var(--cor-texto-primario); 
+    cursor: pointer;
+    flex-grow: 1;
+    transition: var(--transicao-tema);
+}
+.multiselect-no-options {
+    padding: 10px;
+    text-align: center;
+    color: var(--cor-texto-secundario);
+    font-style: italic;
+}
+
+
+#etapasContainer {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px dashed var(--cor-borda-elemento); 
+    border-radius: 5px;
+    min-height: 50px; 
+    transition: var(--transicao-tema);
+}
+
+#etapasContainer .sem-etapas-mensagem {
+    font-style: italic;
+    color: var(--cor-texto-secundario);
+    text-align: center;
+    padding: 10px 0;
+    transition: var(--transicao-tema);
+}
+
+.etapa-item-form {
+    background-color: var(--cor-fundo-pagina); 
+    padding: 20px; 
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 6px; 
+    margin-bottom: 20px; 
+    transition: var(--transicao-tema);
+}
+.etapa-item-form fieldset { /* Fieldset dentro da etapa */
+    border: 1px solid var(--cor-borda-elemento); /* Borda mais suave para fieldset interno */
+    padding: 15px;
+    margin-top: 10px; /* Espaçamento do título da etapa */
+}
+.etapa-item-form fieldset legend { /* Legenda interna da etapa */
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0 5px; 
+    margin-left: 0;
+}
+.etapa-item-form .form-grupo {
+    margin-bottom: 15px; 
+}
+
+.multi-selecao-container-etapa {
+    /* Este container agora será preenchido pelo criarComponenteMultiSelect */
+    /* Estilos de borda/padding são tratados pelo .custom-multiselect-wrapper */
+    border: none;
+    padding: 0;
+    min-height: auto; /* Altura controlada pelo trigger */
+}
+
+.etapa-item-form .btn-remover-etapa {
+    background-color: var(--cor-primaria-urgencia);
+    color: white; 
+    border: 1px solid var(--cor-primaria-urgencia);
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 4px;
+    margin-top: 15px; /* Aumentado espaço acima */
+    display: block; /* Para ocupar a largura ou usar text-align */
+    width: fit-content; /* Para não ocupar toda a largura */
+    margin-left: auto; /* Alinha à direita */
+}
+.etapa-item-form .btn-remover-etapa:hover {
+    background-color: #c82333; 
+    border-color: #bd2130;
+}
+
+#btnAdicionarEtapa, .btn-adicionar-item { 
+    display: inline-flex; 
+    align-items: center;
+    background-color: #17a2b8; 
+    color: white;
+    border: 1px solid #138ea0; 
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    margin-top: 5px; 
+    text-decoration: none;
+}
+#btnAdicionarEtapa i, .btn-adicionar-item i {
+    margin-right: 8px;
+}
+#btnAdicionarEtapa:hover, .btn-adicionar-item:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+.form-acoes {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--cor-borda-elemento);
+    display: flex;
+    justify-content: flex-end; 
+    gap: 15px; 
+    transition: var(--transicao-tema);
+}
+
+.form-acoes .btn-primario {
+    background-color: var(--cor-primaria-urgencia); 
+    color: var(--cor-texto-botao-primario-urgencia);
+    border-color: var(--cor-primaria-urgencia);
+    font-weight: 500;
+    padding: 10px 20px; 
+}
+.form-acoes .btn-primario:hover {
+    background-color: #c82333; 
+    border-color: #bd2130;
+}
+
+.form-acoes .btn-secundario {
+    background-color: var(--cor-botao-fundo); 
+    color: var(--cor-botao-texto);
+    border-color: var(--cor-botao-borda);
+    padding: 10px 20px;
+}
+.form-acoes .btn-secundario:hover {
+    background-color: var(--cor-botao-fundo-hover);
+    border-color: var(--cor-botao-borda-hover);
+}
+
+/* Estilos para feedback de erro nos campos */
+.form-grupo .input-erro {
+    border-color: var(--cor-primaria-urgencia) !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+.form-grupo .mensagem-erro-campo { /* Ajustado para ser irmão do input, não filho */
+    display: block;
+    font-size: 0.85rem;
+    color: var(--cor-primaria-urgencia);
+    margin-top: 5px;
+}
+/* Se o span de erro estiver dentro de um div.form-group, mas não diretamente após o input: */
+/* .mensagem-erro-campo { ... } */
+
+
+@media (max-width: 768px) {
+    .pagina-formulario-plano {
+        padding: 15px;
+    }
+    .form-styled {
+        padding: 20px;
+    }
+    .form-styled fieldset {
+        padding: 15px;
+    }
+    .form-styled legend {
+        font-size: 1.15rem;
+    }
+    .form-linha {
+        flex-direction: column; 
+        gap: 0; 
+    }
+    .form-linha .form-grupo.metades {
+        min-width: 100%; 
+        margin-bottom: 20px; 
+    }
+    .form-linha .form-grupo.metades:last-child {
+        margin-bottom: 0; 
+    }
+    .form-acoes {
+        flex-direction: column; 
+    }
+    .form-acoes button {
+        width: 100%; 
+    }
+    .etapa-item-form .btn-remover-etapa {
+        width: auto; /* Não ocupa toda a largura no mobile, apenas o necessário */
+        /* margin-left: auto; /* Mantém à direita */
+        float: none; /* Remove float para melhor controle com display block/inline-block */
+        display: inline-block; /* Para que margin-left: auto funcione no container pai se ele for flex ou tiver text-align:right */
+        /* Ou simplesmente deixar como está, e o container se ajusta */
+    }
+     /* Para garantir que o botão de remover fique à direita dentro do fieldset da etapa no mobile */
+    .etapa-item-form fieldset {
+        display: flex;
+        flex-direction: column;
+    }
+    .etapa-item-form fieldset .btn-remover-etapa {
+        align-self: flex-end; /* Alinha o botão à direita no container flex da etapa */
+        margin-top: 15px;
+    }
+}

@@ -1,0 +1,389 @@
+/* css/gerenciador/visualizar_planos_gerenciador.css - VERSÃO COMPLETA ATUALIZADA */
+
+.pagina-visualizar-planos {
+    padding: 20px;
+    transition: var(--transicao-tema);
+}
+
+/* --- Estilos para a Visualização da Lista de Planos --- */
+#viewListaPlanos .filtros-planos-gerenciador {
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#viewListaPlanos #filtroNomePlanoGerenciador {
+    padding: 10px 12px;
+    border: 1px solid var(--cor-borda-input);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--cor-fundo-input);
+    color: var(--cor-texto-input);
+    min-width: 300px;
+    transition: var(--transicao-tema);
+}
+#viewListaPlanos #filtroNomePlanoGerenciador:focus {
+    border-color: var(--cor-borda-input-focus);
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    outline: none;
+}
+
+.container-lista-planos .carregando-dados-planos,
+.container-lista-planos .nenhum-plano-encontrado {
+    text-align: center;
+    padding: 25px;
+    font-style: italic;
+    font-size: 1.1em;
+    color: var(--cor-texto-secundario);
+    transition: var(--transicao-tema);
+}
+
+.plano-item-card-gerenciador {
+    background-color: var(--cor-fundo-elemento);
+    border: 1px solid var(--cor-borda-elemento);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px var(--cor-sombra-elemento);
+    transition: var(--transicao-tema), box-shadow 0.2s ease-in-out;
+}
+.plano-item-card-gerenciador:hover {
+    box-shadow: 0 4px 10px var(--cor-sombra-elemento);
+}
+
+.plano-item-card-gerenciador h3 {
+    font-size: 1.4rem;
+    color: var(--cor-link);
+    margin-top: 0;
+    margin-bottom: 12px;
+    transition: var(--transicao-tema);
+}
+
+.plano-item-card-gerenciador p {
+    font-size: 0.95rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 8px;
+    line-height: 1.5;
+    transition: var(--transicao-tema);
+}
+.plano-item-card-gerenciador p strong {
+    color: var(--cor-texto-primario);
+    font-weight: 600;
+}
+.plano-item-card-gerenciador .info-card-lista {
+    font-style: italic;
+}
+.plano-item-card-gerenciador .info-card-lista.nenhum {
+    opacity: 0.7;
+}
+
+/* Estilos para os botões de ação no card do plano */
+.plano-item-card-gerenciador .plano-card-acoes {
+    margin-top: 15px; 
+    display: flex;
+    gap: 10px; 
+    flex-wrap: wrap; 
+}
+
+/* Estilo base comum para os botões "Ver Detalhes" e "Editar Plano" */
+.plano-item-card-gerenciador .plano-card-acoes .btn-ver-detalhes-plano,
+.plano-item-card-gerenciador .plano-card-acoes .btn-editar-plano-lista {
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    font-weight: 500; 
+    border-radius: 5px;
+    text-decoration: none; 
+    border: none; 
+    cursor: pointer;
+    line-height: 1.5; 
+    transition: background-color 0.2s ease, color 0.2s ease, var(--transicao-tema);
+}
+
+/* Botão "Ver Detalhes" (Azul) */
+.plano-item-card-gerenciador .btn-ver-detalhes-plano {
+    background-color: var(--cor-link); 
+    color: var(--cor-texto-botao-primario-urgencia); /* Geralmente branco */
+}
+.plano-item-card-gerenciador .btn-ver-detalhes-plano:hover {
+    background-color: var(--cor-link-hover);
+}
+
+/* Botão/Link "Editar Plano" (Amarelo/Laranja) */
+.plano-item-card-gerenciador .btn-editar-plano-lista {
+    background-color: var(--cor-secundaria-urgencia); 
+    color: var(--cor-texto-primario); 
+}
+.plano-item-card-gerenciador .btn-editar-plano-lista:hover {
+    background-color: #7c34e0; /* Tom de laranja/amarelo mais escuro para hover */
+    color: var(--cor-texto-primario); 
+}
+
+
+/* --- Estilos para a Visualização de Detalhes de UM Plano --- */
+.container-detalhes-plano {
+    background-color: var(--cor-fundo-elemento);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda-elemento);
+    box-shadow: 0 2px 8px var(--cor-sombra-elemento);
+    transition: var(--transicao-tema);
+}
+
+.btn-voltar { 
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    padding: 10px 18px;
+    background-color: var(--cor-botao-fundo);
+    color: var(--cor-botao-texto);
+    border: 1px solid var(--cor-botao-borda);
+    border-radius: 5px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transicao-tema);
+}
+.btn-voltar:hover {
+    background-color: var(--cor-botao-fundo-hover);
+    border-color: var(--cor-botao-borda-hover);
+}
+.btn-voltar i {
+    font-size: 0.9em;
+}
+
+.detalhes-plano-cabecalho {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--cor-borda-elemento);
+    transition: var(--transicao-tema);
+}
+.detalhes-plano-cabecalho h2 {
+    font-size: 1.7rem;
+    color: var(--cor-texto-primario);
+    margin: 0 0 10px 0;
+    font-weight: 600;
+    transition: var(--transicao-tema);
+}
+.detalhes-plano-cabecalho .info-geral-detalhe {
+    font-size: 0.95rem;
+    color: var(--cor-texto-secundario);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 25px;
+    transition: var(--transicao-tema);
+}
+.detalhes-plano-cabecalho .info-geral-detalhe strong {
+    color: var(--cor-texto-primario);
+}
+
+.status-tag {
+    padding: 3px 8px; 
+    border-radius: 12px; 
+    font-size: 0.8em; 
+    font-weight: bold; 
+    color: white; /* Default, pode ser sobrescrito por classes específicas */
+    text-transform: capitalize; /* Mudado de uppercase para melhor leitura de status como "Em Andamento" */
+    display: inline-block; /* Garante que padding seja aplicado corretamente */
+    line-height: 1.4; /* Ajuste para alinhamento vertical */
+}
+.nivel-tag {
+    padding: 3px 8px; 
+    border-radius: 4px; /* Mais retangular que o status-tag */
+    font-size: 0.8em; 
+    font-weight: bold; 
+    color: white; /* Default */
+    text-transform: uppercase;
+    display: inline-block;
+    line-height: 1.4;
+}
+/* Cores específicas para status (usando as classes geradas pelo JS) */
+.status-plano-nao_iniciado, .status-etapa-nao_iniciado { background-color: var(--cor-botao-fundo); color: var(--cor-botao-texto); } /* Cinza */
+.status-plano-em_andamento, .status-etapa-em_andamento { background-color: var(--cor-link); color: white; } /* Azul */
+.status-plano-concluido, .status-etapa-concluido { background-color: #28a745; color: white; } /* Verde */
+.status-plano-indefinido, .status-etapa-indefinido { background-color: #adb5bd; color: #212529;}
+
+/* Cores para Nível (do admin-layout.css, verifique se estão no seu global ou gerenciador-layout) */
+.nivel-alto { background-color: #dc3545; color: white; } 
+.nivel-medio { background-color: #657863; color: #212529 !important; } 
+.nivel-baixo { background-color: #28a745; color: white; }
+.nivel-desconhecido { background-color: #6c757d; color: white; }
+
+
+.detalhes-plano-corpo .info-bloco-detalhe {
+    background-color: var(--cor-fundo-pagina);
+    border: 1px solid var(--cor-borda-elemento);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: var(--transicao-tema);
+}
+.detalhes-plano-corpo .info-bloco-detalhe h3 {
+    font-size: 1.25rem;
+    color: var(--cor-texto-primario);
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--cor-borda-input);
+    transition: var(--transicao-tema);
+}
+.detalhes-plano-corpo .info-bloco-detalhe p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: var(--cor-texto-secundario);
+    transition: var(--transicao-tema);
+}
+.detalhes-plano-corpo .info-bloco-detalhe p strong {
+    color: var(--cor-texto-primario);
+    font-weight: 600;
+}
+.detalhes-plano-corpo .info-bloco-detalhe .lista-detalhe { 
+    font-style: italic;
+}
+.detalhes-plano-corpo .info-bloco-detalhe .lista-detalhe.nenhum {
+    opacity: 0.7;
+}
+
+.lista-etapas-detalhe .carregando-dados-etapas,
+.lista-etapas-detalhe .nenhuma-etapa-encontrada {
+    text-align: center;
+    padding: 15px;
+    font-style: italic;
+    color: var(--cor-texto-secundario);
+}
+
+.etapa-item-detalhe-gerenciador {
+    padding: 15px 0;
+    border-bottom: 1px dashed var(--cor-borda-elemento);
+    transition: var(--transicao-tema);
+}
+.etapa-item-detalhe-gerenciador:last-child {
+    border-bottom: none;
+}
+
+.etapa-titulo-posicao-gerenciador {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+.etapa-posicao-gerenciador {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--cor-primaria-urgencia);
+    margin-right: 10px;
+}
+.etapa-titulo-gerenciador { /* Era h4 no JS, mas pode ser h5 se h3 é o título do bloco "Etapas" */
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--cor-texto-primario);
+    margin: 0;
+}
+
+.etapa-item-detalhe-gerenciador p.etapa-descricao-gerenciador {
+    padding-left: 25px; 
+    margin-bottom: 8px;
+    color: var(--cor-texto-secundario);
+}
+.etapa-item-detalhe-gerenciador p.etapa-descricao-gerenciador strong {
+    color: var(--cor-texto-primario);
+}
+
+.etapa-info-adicional-gerenciador {
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px; 
+    padding-left: 25px; 
+    margin-top: 8px;
+}
+.etapa-info-adicional-gerenciador span strong {
+    color: var(--cor-texto-primario);
+}
+.etapa-info-adicional-gerenciador .lista-impacto-etapa-gerenciador {
+    font-style: italic;
+}
+.etapa-info-adicional-gerenciador .lista-impacto-etapa-gerenciador.nenhum {
+    opacity: 0.7;
+}
+
+.etapa-monitoramento-admin { /* Reutilizando nome de classe se o estilo for o mesmo do admin */
+    padding-left: 25px; 
+    margin-top: 8px;
+    font-size: 0.9rem; /* Aumentado um pouco */
+    color: var(--cor-texto-secundario);
+}
+.etapa-monitoramento-admin strong {
+    color: var(--cor-texto-primario);
+}
+.cronometro-admin-gerenciador {
+    font-weight: bold;
+    color: var(--cor-link);
+    margin-left: 5px;
+    font-size: 0.95rem; /* Aumentado */
+}
+.cronometro-admin-gerenciador.tempo-excedido-admin-gerenciador { /* Classe específica para gerenciador */
+    color: var(--cor-primaria-urgencia);
+}
+.aviso-tempo-admin-gerenciador { /* Classe específica para gerenciador */
+    font-style: italic;
+    color: var(--cor-primaria-urgencia);
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+@keyframes blinkWarning { /* Defina se não estiver global */
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+.cronometro-admin-gerenciador.tempo-excedido-admin-gerenciador {
+    animation: blinkWarning 1.2s infinite;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #viewListaPlanos .filtros-planos-gerenciador {
+        flex-direction: column;
+        align-items: stretch; 
+    }
+    #viewListaPlanos #filtroNomePlanoGerenciador {
+        min-width: 0; 
+        width: 100%;
+    }
+    .detalhes-plano-cabecalho h2 {
+        font-size: 1.5rem;
+    }
+    .detalhes-plano-corpo .info-bloco-detalhe {
+        padding: 15px;
+    }
+    .detalhes-plano-corpo .info-bloco-detalhe h3 {
+        font-size: 1.15rem;
+    }
+    .etapa-info-adicional-gerenciador {
+        flex-direction: column; 
+        gap: 5px;
+        padding-left: 0; /* Ajuste para quando empilhado */
+    }
+    .etapa-item-detalhe-gerenciador p.etapa-descricao-gerenciador,
+    .etapa-monitoramento-admin {
+        padding-left: 0; /* Ajuste para quando empilhado */
+    }
+    .etapa-titulo-posicao-gerenciador {
+        flex-direction: column; /* Empilha posição e título da etapa */
+        align-items: flex-start;
+    }
+    .etapa-posicao-gerenciador {
+        margin-bottom: 4px; /* Espaço entre posição e título */
+    }
+}
+
+body.dark-mode .etapa-status.nao-iniciado {
+    color: #212529; 
+}

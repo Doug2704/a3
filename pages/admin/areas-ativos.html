@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áreas e Ativos - Incidex</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/admin/admin-layout.css">
+    <link rel="stylesheet" href="../../css/admin/areasAtivosAdmin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <button id="btn-alternar-tema" title="Alternar Tema">🌙</button> 
+    <button id="btn-toggle-sidebar" class="btn-toggle-sidebar">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <div id="sidebar-placeholder"></div>
+    <div class="conteudo-principal-admin" id="conteudoPrincipalAdmin">
+        <header class="cabecalho-pagina-admin">
+            <h1><i class="fa-solid fa-sitemap"></i> Gerenciar Áreas e Ativos</h1>
+            <div class="acoes-cabecalho">
+                <button id="btnNovaArea" class="btn-acao-principal">
+                    <i class="fa-solid fa-plus-circle"></i> Nova Área
+                </button>
+                <button id="btnNovoAtivo" class="btn-acao-principal">
+                    <i class="fa-solid fa-cube"></i> Novo Ativo
+                </button>
+            </div>
+        </header>
+        <main class="pagina-areas-ativos-admin">
+            <div id="form-container-admin" class="form-container-admin"></div>
+            <div class="filtros-areas-ativos">
+                <input type="search" id="filtroNomeAreaAtivo" placeholder="Filtrar por nome da área ou ativo...">
+            </div>
+            <div id="containerAreas" class="container-areas">
+                <p class="carregando-dados">Carregando áreas e ativos...</p>
+            </div>
+        </main>
+    </div>
+
+    <template id="form-nova-area-template">
+        <div class="form-card-admin">
+            <h3><i class="fa-solid fa-plus-circle"></i> Criar Nova Área</h3>
+            <form id="formNovaArea">
+                <div class="form-grupo">
+                    <label for="nomeNovaArea">Nome da Área</label>
+                    <input type="text" id="nomeNovaArea" name="name" required>
+                </div>
+                <div class="form-acoes-inline">
+                    <button type="submit" class="btn-acao-principal">Salvar Área</button>
+                    <button type="button" class="btn-acao-secundario btn-cancelar-form">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </template>
+
+    <template id="form-novo-ativo-template">
+        <div class="form-card-admin">
+            <h3><i class="fa-solid fa-cube"></i> Criar Novo Ativo</h3>
+            <form id="formNovoAtivo">
+                <div class="form-grupo">
+                    <label for="areaPaiAtivo">Vincular à Área</label>
+                    <select id="areaPaiAtivo" name="areaId" required>
+                        <option value="">Selecione uma área...</option>
+                    </select>
+                </div>
+                <div class="form-grupo">
+                    <label for="nomeNovoAtivo">Nome do Ativo</label>
+                    <input type="text" id="nomeNovoAtivo" name="name" required>
+                </div>
+                <div class="form-acoes-inline">
+                    <button type="submit" class="btn-acao-principal">Salvar Ativo</button>
+                    <button type="button" class="btn-acao-secundario btn-cancelar-form">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </template>
+
+    <template id="area-card-template">
+        <div class="area-item">
+            <div class="area-cabecalho">
+                <div class="area-cabecalho-info">
+                    <h3 class="area-nome"></h3>
+                </div>
+                <div class="area-acoes">
+                    <button class="btn-menu-acoes" data-tipo="area"></button>
+                    <div class="dropdown-menu-acoes">
+                        <button class="editar"><i class="fa-solid fa-pencil"></i> Editar</button>
+                        <button class="excluir"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+                    </div>
+                    <span class="area-toggle" data-role="toggler"></span>
+                </div>
+            </div>
+            <div class="area-conteudo">
+                <p class="area-descricao"></p>
+                <div class="area-assets-container">
+                    <p class="carregando-ativos">Clique na seta para carregar os ativos...</p>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="ativo-item-template">
+        <li class="ativo-item">
+            <span class="ativo-nome"></span>
+            <div class="ativo-acoes">
+                <button class="btn-menu-acoes" data-tipo="ativo"></button>
+                <div class="dropdown-menu-acoes">
+                    <button class="editar"><i class="fa-solid fa-pencil"></i> Editar</button>
+                    <button class="excluir"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+                </div>
+            </div>
+        </li>
+    </template>
+
+    <script type="module" src="../../js/admin/adminPageSetup.js"></script>
+    <script type="module" src="../../js/authService.js"></script>
+    <script type="module" src="../../js/apiService.js"></script>
+    <script type="module" src="../../js/admin/areasAtivosAdmin.js"></script> 
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs do Sistema - Incidex</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/admin/admin-layout.css">
+    <link rel="stylesheet" href="../../css/admin/logsAdmin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <button id="btn-alternar-tema" title="Alternar Tema">🌙</button> 
+    <button id="btn-toggle-sidebar" class="btn-toggle-sidebar">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <div id="sidebar-placeholder"></div>
+    <div class="conteudo-principal-admin" id="conteudoPrincipalAdmin">
+        <header class="cabecalho-pagina-admin">
+            <h1><i class="fa-solid fa-file-lines"></i> Logs do Sistema</h1>
+        </header>
+        <main class="pagina-logs-admin">
+            <div class="tabela-container">
+                <table class="tabela-dados">
+                    <thead>
+                        <tr>
+                            <th>Data e Hora</th>
+                            <th>Usuário</th>
+                            <th>Ação</th>
+                            <th>Detalhes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpo-tabela-logs">
+                        <tr>
+                            <td colspan="4" class="carregando-dados">Carregando logs do sistema...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="../../js/config.js"></script>
+    <script type="module" src="../../js/themeManager.js"></script>
+    <script type="module" src="../../js/authService.js"></script>
+    <script type="module" src="../../js/apiService.js"></script>
+    <script type="module" src="../../js/admin/adminPageSetup.js"></script>
+    <script type="module" src="../../js/admin/logsAdmin.js"></script> 
+</body>
+</html>
