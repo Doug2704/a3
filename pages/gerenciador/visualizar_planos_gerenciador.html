@@ -6,13 +6,11 @@
     <title>Acompanhar Planos de Ação - SafePass</title>
     <link rel="stylesheet" href="../../css/global.css">
     <link rel="stylesheet" href="../../css/gerenciador/gerenciador-layout.css">
-    <link rel="stylesheet" href="../../css/gerenciador/visualizar_planos_gerenciador.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="../../css/gerenciador/visualizar_planos_gerenciador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
-    <button id="btn-toggle-sidebar" class="btn-toggle-sidebar">
-        <i class="fa-solid fa-bars"></i>
-    </button>
-
+    <button id="btn-toggle-sidebar" class="btn-toggle-sidebar"><i class="fa-solid fa-bars"></i></button>
     <div id="sidebar-placeholder"></div>
 
     <div class="conteudo-principal-gerenciador" id="conteudoPrincipalGerenciador">
@@ -21,43 +19,47 @@
         </header>
 
         <main class="pagina-visualizar-planos">
-            
             <div id="viewListaPlanos">
-                <div class="filtros-planos-gerenciador">
-                    <input type="search" id="filtroNomePlanoGerenciador" placeholder="Filtrar por nome do plano...">
-                    </div>
+                <div class="filtros-e-acoes">
+                    <input type="search" id="filtroNomePlano" placeholder="Filtrar por título do plano...">
+                    <a href="formulario_plano_acao.html" class="btn-novo-plano">
+                        <i class="fa-solid fa-plus"></i> Novo Plano
+                    </a>
+                </div>
                 <div id="containerListaPlanos" class="container-lista-planos">
                     <p class="carregando-dados-planos">Carregando planos de ação...</p>
-                    </div>
+                </div>
             </div>
 
             <div id="viewDetalhesPlano" class="container-detalhes-plano" style="display: none;">
                 <button id="btnVoltarParaLista" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i> Voltar para Lista</button>
                 
                 <div class="detalhes-plano-cabecalho">
-                    <h2 id="detalhePlanoTitulo">Título do Plano de Ação</h2>
-                    <div class="info-geral-detalhe">
-                        <span><strong>ID:</strong> <span id="detalhePlanoId"></span></span>
-                        <span><strong>Status Geral:</strong> <span id="detalhePlanoStatusGeral" class="status-tag"></span></span>
+                    <div>
+                        <h2 id="detalhePlanoTitulo">Título do Plano de Ação</h2>
+                        <div class="info-geral-detalhe">
+                        </div>
+                    </div>
+                    <div class="cabecalho-acoes">
+                        <a href="#" id="btnEditarPlano" class="btn-editar-plano">
+                            <i class="fa-solid fa-edit"></i> Editar
+                        </a>
                     </div>
                 </div>
 
                 <div class="detalhes-plano-corpo">
                     <section class="info-bloco-detalhe">
-                        <h3>Informações do Plano</h3>
+                        <h3>Informações Gerais</h3>
                         <p><strong>Descrição do Incidente:</strong> <span id="detalhePlanoDescricaoIncidente"></span></p>
                         <p><strong>Área Responsável:</strong> <span id="detalhePlanoAreaResponsavel"></span></p>
                         <p><strong>Nível de Urgência:</strong> <span id="detalhePlanoNivelUrgencia" class="nivel-tag"></span></p>
                         <p><strong>Nível de Impacto:</strong> <span id="detalhePlanoNivelImpacto" class="nivel-tag"></span></p>
+                        <p><strong>Duração Máxima Sugerida:</strong> <span id="detalhePlanoMaxDuration"></span></p>
                         <p><strong>Áreas Impactadas:</strong> <span id="detalhePlanoAreasImpactadas" class="lista-detalhe"></span></p>
-                        <p><strong>Ativos Impactados:</strong> <span id="detalhePlanoAtivosImpactados" class="lista-detalhe"></span></p>
                     </section>
-
                     <section class="info-bloco-detalhe info-bloco-etapas-detalhe">
                         <h3>Etapas do Plano</h3>
-                        <div id="listaEtapasDoPlano" class="lista-etapas-detalhe">
-                            <p class="carregando-dados-etapas">Carregando etapas...</p>
-                            </div>
+                        <div id="listaEtapasDoPlano" class="lista-etapas-detalhe"></div>
                     </section>
                 </div>
             </div>
@@ -66,11 +68,6 @@
 
     <button id="btn-alternar-tema" title="Alternar Tema">🌙</button>
 
-    <script type="module" src="../../js/config.js"></script>
-    <script type="module" src="../../js/themeManager.js"></script>
-    <script type="module" src="../../js/authService.js"></script>
-    <script type="module" src="../../js/apiService.js"></script> 
-    
-    <script type="module" src="../../js/gerenciador/gerenciadorPageSetup.js"></script>
-    <script type="module" src="../../js/gerenciador/planosAcaoGerenciador.js"></script> </body>
+    <script type="module" src="../../js/gerenciador/planosAcaoGerenciador.js"></script>
+    </body>
 </html>

@@ -132,7 +132,8 @@ export async function excluirAtivo(ativoId, token) { return apiRequest(`/assets/
 export async function buscarPlanosAcaoTodos(token) { return apiRequest(`/plans/find/all`, 'GET', null, token); }
 export async function buscarPlanoAcaoPorId(idPlano, token) { return apiRequest(`/plans/find/${idPlano}`, 'GET', null, token); }
 export async function buscarPlanosPorArea(areaId, token) { return apiRequest(`/plans/find/byAreaId/${areaId}`, 'GET', null, token); }
-export async function criarPlanoAcao(dadosPlano, token) { return apiRequest(`/plans/create`, 'POST', dadosPlano, token); }
+// AQUI ESTÁ A CORREÇÃO: Renomeado de "criarPlanoAcao" para "criarPlanoAcaoGerenciador" para corresponder à chamada no seu formulário.
+export async function criarPlanoAcaoGerenciador(dadosPlano, token) { return apiRequest(`/plans/create`, 'POST', dadosPlano, token); }
 export async function atualizarPlanoAcao(idPlano, dadosPlano, token) { return apiRequest(`/plans/update/${idPlano}`, 'PUT', dadosPlano, token); }
 export async function apagarPlanoAcao(idPlano, token) { return apiRequest(`/plans/delete/${idPlano}`, 'DELETE', null, token); }
 

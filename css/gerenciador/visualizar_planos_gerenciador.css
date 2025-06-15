@@ -1,389 +1,233 @@
-/* css/gerenciador/visualizar_planos_gerenciador.css - VERSÃO COMPLETA ATUALIZADA */
-
 .pagina-visualizar-planos {
     padding: 20px;
-    transition: var(--transicao-tema);
 }
-
-/* --- Estilos para a Visualização da Lista de Planos --- */
-#viewListaPlanos .filtros-planos-gerenciador {
-    margin-bottom: 25px;
+.filtros-e-acoes {
     display: flex;
-    gap: 15px;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
-
-#viewListaPlanos #filtroNomePlanoGerenciador {
-    padding: 10px 12px;
+.filtros-e-acoes input[type="search"] {
+    padding: 10px;
     border: 1px solid var(--cor-borda-input);
     border-radius: 5px;
-    font-size: 1rem;
     background-color: var(--cor-fundo-input);
     color: var(--cor-texto-input);
-    min-width: 300px;
-    transition: var(--transicao-tema);
+    flex-grow: 1;
+    max-width: 400px;
 }
-#viewListaPlanos #filtroNomePlanoGerenciador:focus {
-    border-color: var(--cor-borda-input-focus);
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-    outline: none;
+.btn-novo-plano {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s;
 }
-
-.container-lista-planos .carregando-dados-planos,
-.container-lista-planos .nenhum-plano-encontrado {
-    text-align: center;
-    padding: 25px;
-    font-style: italic;
-    font-size: 1.1em;
-    color: var(--cor-texto-secundario);
-    transition: var(--transicao-tema);
+.btn-novo-plano:hover {
+    background-color: var(--cor-primaria-hover);
 }
-
+.container-lista-planos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
 .plano-item-card-gerenciador {
     background-color: var(--cor-fundo-elemento);
     border: 1px solid var(--cor-borda-elemento);
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 20px;
     box-shadow: 0 2px 5px var(--cor-sombra-elemento);
-    transition: var(--transicao-tema), box-shadow 0.2s ease-in-out;
-}
-.plano-item-card-gerenciador:hover {
-    box-shadow: 0 4px 10px var(--cor-sombra-elemento);
-}
-
-.plano-item-card-gerenciador h3 {
-    font-size: 1.4rem;
-    color: var(--cor-link);
-    margin-top: 0;
-    margin-bottom: 12px;
-    transition: var(--transicao-tema);
-}
-
-.plano-item-card-gerenciador p {
-    font-size: 0.95rem;
-    color: var(--cor-texto-secundario);
-    margin-bottom: 8px;
-    line-height: 1.5;
-    transition: var(--transicao-tema);
-}
-.plano-item-card-gerenciador p strong {
-    color: var(--cor-texto-primario);
-    font-weight: 600;
-}
-.plano-item-card-gerenciador .info-card-lista {
-    font-style: italic;
-}
-.plano-item-card-gerenciador .info-card-lista.nenhum {
-    opacity: 0.7;
-}
-
-/* Estilos para os botões de ação no card do plano */
-.plano-item-card-gerenciador .plano-card-acoes {
-    margin-top: 15px; 
     display: flex;
-    gap: 10px; 
-    flex-wrap: wrap; 
+    flex-direction: column;
 }
-
-/* Estilo base comum para os botões "Ver Detalhes" e "Editar Plano" */
-.plano-item-card-gerenciador .plano-card-acoes .btn-ver-detalhes-plano,
-.plano-item-card-gerenciador .plano-card-acoes .btn-editar-plano-lista {
-    display: inline-flex; 
-    align-items: center;
-    justify-content: center;
-    padding: 8px 15px;
+.plano-item-card-gerenciador h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--cor-texto-primario);
+}
+.plano-item-card-gerenciador p {
+    margin: 0 0 10px 0;
+    color: var(--cor-texto-secundario);
     font-size: 0.9rem;
-    font-weight: 500; 
-    border-radius: 5px;
-    text-decoration: none; 
-    border: none; 
-    cursor: pointer;
-    line-height: 1.5; 
-    transition: background-color 0.2s ease, color 0.2s ease, var(--transicao-tema);
 }
-
-/* Botão "Ver Detalhes" (Azul) */
-.plano-item-card-gerenciador .btn-ver-detalhes-plano {
-    background-color: var(--cor-link); 
-    color: var(--cor-texto-botao-primario-urgencia); /* Geralmente branco */
+.plano-card-acoes {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid var(--cor-borda-elemento);
+    text-align: right;
 }
-.plano-item-card-gerenciador .btn-ver-detalhes-plano:hover {
-    background-color: var(--cor-link-hover);
-}
-
-/* Botão/Link "Editar Plano" (Amarelo/Laranja) */
-.plano-item-card-gerenciador .btn-editar-plano-lista {
-    background-color: var(--cor-secundaria-urgencia); 
-    color: var(--cor-texto-primario); 
-}
-.plano-item-card-gerenciador .btn-editar-plano-lista:hover {
-    background-color: #7c34e0; /* Tom de laranja/amarelo mais escuro para hover */
-    color: var(--cor-texto-primario); 
-}
-
-
-/* --- Estilos para a Visualização de Detalhes de UM Plano --- */
-.container-detalhes-plano {
-    background-color: var(--cor-fundo-elemento);
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid var(--cor-borda-elemento);
-    box-shadow: 0 2px 8px var(--cor-sombra-elemento);
-    transition: var(--transicao-tema);
-}
-
-.btn-voltar { 
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 25px;
-    padding: 10px 18px;
+.btn-ver-detalhes-plano {
+    padding: 8px 16px;
     background-color: var(--cor-botao-fundo);
     color: var(--cor-botao-texto);
     border: 1px solid var(--cor-botao-borda);
     border-radius: 5px;
-    font-size: 0.95rem;
     cursor: pointer;
-    transition: var(--transicao-tema);
+    transition: background-color 0.2s, border-color 0.2s;
 }
-.btn-voltar:hover {
+.btn-ver-detalhes-plano:hover {
     background-color: var(--cor-botao-fundo-hover);
     border-color: var(--cor-botao-borda-hover);
 }
-.btn-voltar i {
-    font-size: 0.9em;
-}
-
-.detalhes-plano-cabecalho {
+.carregando-dados-planos, .nenhum-plano-encontrado {
+    width: 100%;
     text-align: center;
-    margin-bottom: 20px;
+    padding: 40px;
+    color: var(--cor-texto-secundario);
+    font-style: italic;
+}
+.container-detalhes-plano {
+    background-color: var(--cor-fundo-elemento);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda-elemento);
+}
+.btn-voltar {
+    margin-bottom: 25px;
+    background: none;
+    border: none;
+    color: var(--cor-texto-link);
+    cursor: pointer;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.detalhes-plano-cabecalho {
     padding-bottom: 15px;
+    margin-bottom: 25px;
     border-bottom: 1px solid var(--cor-borda-elemento);
-    transition: var(--transicao-tema);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 .detalhes-plano-cabecalho h2 {
-    font-size: 1.7rem;
+    margin: 0;
     color: var(--cor-texto-primario);
-    margin: 0 0 10px 0;
-    font-weight: 600;
-    transition: var(--transicao-tema);
 }
-.detalhes-plano-cabecalho .info-geral-detalhe {
-    font-size: 0.95rem;
-    color: var(--cor-texto-secundario);
+.info-geral-detalhe {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px 25px;
-    transition: var(--transicao-tema);
+    gap: 20px;
+    align-items: center;
+    margin-top: 5px;
 }
-.detalhes-plano-cabecalho .info-geral-detalhe strong {
+.cabecalho-acoes .btn-editar-plano {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    background-color: transparent;
+    border: 1px solid var(--cor-borda-input-focus);
+    color: var(--cor-borda-input-focus);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.cabecalho-acoes .btn-editar-plano:hover {
+    background-color: var(--cor-borda-input-focus);
+    color: white;
+}
+.detalhes-plano-corpo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+.info-bloco-detalhe h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--cor-texto-primario);
+    border-bottom: 1px solid var(--cor-borda-elemento);
+    padding-bottom: 10px;
+}
+.info-bloco-detalhe p {
+    margin: 0 0 12px 0;
+    color: var(--cor-texto-secundario);
+}
+.info-bloco-detalhe p strong {
     color: var(--cor-texto-primario);
 }
-
-.status-tag {
-    padding: 3px 8px; 
-    border-radius: 12px; 
-    font-size: 0.8em; 
-    font-weight: bold; 
-    color: white; /* Default, pode ser sobrescrito por classes específicas */
-    text-transform: capitalize; /* Mudado de uppercase para melhor leitura de status como "Em Andamento" */
-    display: inline-block; /* Garante que padding seja aplicado corretamente */
-    line-height: 1.4; /* Ajuste para alinhamento vertical */
+.status-tag, .nivel-tag {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #fff;
 }
-.nivel-tag {
-    padding: 3px 8px; 
-    border-radius: 4px; /* Mais retangular que o status-tag */
-    font-size: 0.8em; 
-    font-weight: bold; 
-    color: white; /* Default */
-    text-transform: uppercase;
-    display: inline-block;
-    line-height: 1.4;
+.status-plano-not-started, .status-etapa-not-started { background-color: #6c757d; }
+.status-plano-executing, .status-etapa-executing { background-color: #007bff; }
+.status-plano-finished, .status-etapa-finished { background-color: #28a745; }
+.status-plano-waiting, .status-etapa-waiting { background-color: #ffc107; color: #212529;}
+.nivel-low { background-color: #17a2b8; }
+.nivel-medium { background-color: #ffc107; color: #212529;}
+.nivel-high { background-color: #dc3545; }
+.lista-etapas-detalhe {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-/* Cores específicas para status (usando as classes geradas pelo JS) */
-.status-plano-nao_iniciado, .status-etapa-nao_iniciado { background-color: var(--cor-botao-fundo); color: var(--cor-botao-texto); } /* Cinza */
-.status-plano-em_andamento, .status-etapa-em_andamento { background-color: var(--cor-link); color: white; } /* Azul */
-.status-plano-concluido, .status-etapa-concluido { background-color: #28a745; color: white; } /* Verde */
-.status-plano-indefinido, .status-etapa-indefinido { background-color: #adb5bd; color: #212529;}
-
-/* Cores para Nível (do admin-layout.css, verifique se estão no seu global ou gerenciador-layout) */
-.nivel-alto { background-color: #dc3545; color: white; } 
-.nivel-medio { background-color: #657863; color: #212529 !important; } 
-.nivel-baixo { background-color: #28a745; color: white; }
-.nivel-desconhecido { background-color: #6c757d; color: white; }
-
-
-.detalhes-plano-corpo .info-bloco-detalhe {
+.etapa-item-detalhe-gerenciador {
     background-color: var(--cor-fundo-pagina);
     border: 1px solid var(--cor-borda-elemento);
     border-radius: 6px;
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: var(--transicao-tema);
-}
-.detalhes-plano-corpo .info-bloco-detalhe h3 {
-    font-size: 1.25rem;
-    color: var(--cor-texto-primario);
-    margin-top: 0;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--cor-borda-input);
-    transition: var(--transicao-tema);
-}
-.detalhes-plano-corpo .info-bloco-detalhe p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
-    color: var(--cor-texto-secundario);
-    transition: var(--transicao-tema);
-}
-.detalhes-plano-corpo .info-bloco-detalhe p strong {
-    color: var(--cor-texto-primario);
-    font-weight: 600;
-}
-.detalhes-plano-corpo .info-bloco-detalhe .lista-detalhe { 
-    font-style: italic;
-}
-.detalhes-plano-corpo .info-bloco-detalhe .lista-detalhe.nenhum {
-    opacity: 0.7;
-}
-
-.lista-etapas-detalhe .carregando-dados-etapas,
-.lista-etapas-detalhe .nenhuma-etapa-encontrada {
-    text-align: center;
     padding: 15px;
-    font-style: italic;
-    color: var(--cor-texto-secundario);
 }
-
-.etapa-item-detalhe-gerenciador {
-    padding: 15px 0;
-    border-bottom: 1px dashed var(--cor-borda-elemento);
-    transition: var(--transicao-tema);
-}
-.etapa-item-detalhe-gerenciador:last-child {
-    border-bottom: none;
-}
-
 .etapa-titulo-posicao-gerenciador {
     display: flex;
-    align-items: baseline;
-    margin-bottom: 8px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
 }
-.etapa-posicao-gerenciador {
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--cor-primaria-urgencia);
-    margin-right: 10px;
-}
-.etapa-titulo-gerenciador { /* Era h4 no JS, mas pode ser h5 se h3 é o título do bloco "Etapas" */
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--cor-texto-primario);
+.etapa-titulo-posicao-gerenciador h4 {
     margin: 0;
-}
-
-.etapa-item-detalhe-gerenciador p.etapa-descricao-gerenciador {
-    padding-left: 25px; 
-    margin-bottom: 8px;
-    color: var(--cor-texto-secundario);
-}
-.etapa-item-detalhe-gerenciador p.etapa-descricao-gerenciador strong {
     color: var(--cor-texto-primario);
 }
-
 .etapa-info-adicional-gerenciador {
-    font-size: 0.9rem;
-    color: var(--cor-texto-secundario);
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 20px; 
-    padding-left: 25px; 
-    margin-top: 8px;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--cor-borda-elemento);
 }
-.etapa-info-adicional-gerenciador span strong {
-    color: var(--cor-texto-primario);
+.etapa-acoes-container {
+    margin-top: 10px;
 }
-.etapa-info-adicional-gerenciador .lista-impacto-etapa-gerenciador {
-    font-style: italic;
-}
-.etapa-info-adicional-gerenciador .lista-impacto-etapa-gerenciador.nenhum {
-    opacity: 0.7;
-}
-
-.etapa-monitoramento-admin { /* Reutilizando nome de classe se o estilo for o mesmo do admin */
-    padding-left: 25px; 
-    margin-top: 8px;
-    font-size: 0.9rem; /* Aumentado um pouco */
+.etapa-acoes-container h5 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
     color: var(--cor-texto-secundario);
 }
-.etapa-monitoramento-admin strong {
+.etapa-acoes-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
     color: var(--cor-texto-primario);
 }
-.cronometro-admin-gerenciador {
-    font-weight: bold;
-    color: var(--cor-link);
-    margin-left: 5px;
-    font-size: 0.95rem; /* Aumentado */
+.etapa-acoes-container li {
+    margin-bottom: 5px;
 }
-.cronometro-admin-gerenciador.tempo-excedido-admin-gerenciador { /* Classe específica para gerenciador */
-    color: var(--cor-primaria-urgencia);
-}
-.aviso-tempo-admin-gerenciador { /* Classe específica para gerenciador */
-    font-style: italic;
-    color: var(--cor-primaria-urgencia);
-    font-weight: bold;
-    margin-left: 10px;
-}
-
-@keyframes blinkWarning { /* Defina se não estiver global */
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-}
-.cronometro-admin-gerenciador.tempo-excedido-admin-gerenciador {
-    animation: blinkWarning 1.2s infinite;
-}
-
-
-/* Responsividade */
 @media (max-width: 768px) {
-    #viewListaPlanos .filtros-planos-gerenciador {
+    .filtros-e-acoes {
         flex-direction: column;
-        align-items: stretch; 
+        align-items: stretch;
     }
-    #viewListaPlanos #filtroNomePlanoGerenciador {
-        min-width: 0; 
-        width: 100%;
+    .filtros-e-acoes input[type="search"] {
+        max-width: none;
     }
-    .detalhes-plano-cabecalho h2 {
-        font-size: 1.5rem;
+    .container-detalhes-plano {
+        padding: 20px;
     }
-    .detalhes-plano-corpo .info-bloco-detalhe {
-        padding: 15px;
-    }
-    .detalhes-plano-corpo .info-bloco-detalhe h3 {
-        font-size: 1.15rem;
-    }
-    .etapa-info-adicional-gerenciador {
-        flex-direction: column; 
-        gap: 5px;
-        padding-left: 0; /* Ajuste para quando empilhado */
-    }
-    .etapa-item-detalhe-gerenciador p.etapa-descricao-gerenciador,
-    .etapa-monitoramento-admin {
-        padding-left: 0; /* Ajuste para quando empilhado */
-    }
-    .etapa-titulo-posicao-gerenciador {
-        flex-direction: column; /* Empilha posição e título da etapa */
-        align-items: flex-start;
-    }
-    .etapa-posicao-gerenciador {
-        margin-bottom: 4px; /* Espaço entre posição e título */
-    }
-}
-
-body.dark-mode .etapa-status.nao-iniciado {
-    color: #212529; 
 }
