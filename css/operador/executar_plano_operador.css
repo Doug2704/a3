@@ -10,6 +10,48 @@
     color: var(--cor-link);
     white-space: nowrap;
 }
+.status-geral-container {
+    background-color: var(--cor-fundo-elemento);
+    border: 1px solid var(--cor-borda-elemento);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+}
+.cronometro-geral-info, .status-plano-info {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+#cronometro-geral {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    background-color: var(--cor-fundo);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.botoes-controle-container {
+    margin-bottom: 25px;
+    text-align: center;
+}
+.btn-principal-acao {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.2s;
+}
+.btn-principal-acao:hover {
+    background-color: #0056b3;
+}
 .detalhes-plano-resumo {
     background-color: var(--cor-fundo-elemento);
     padding: 20px;
@@ -33,14 +75,6 @@
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
-.etapa-cabecalho h4 { margin: 0; font-size: 1.2rem; }
-.etapa-status { font-weight: bold; padding: 4px 10px; border-radius: 15px; color: white; font-size: 0.8rem; text-transform: uppercase; }
-.etapa-status.not_started { background-color: #6c757d; }
-.etapa-status.in_progress { background-color: #007bff; }
-.etapa-status.completed { background-color: #28a745; }
-.etapa-info { margin: 15px 0; }
-.etapa-info p { margin: 5px 0 10px 0; }
-.etapa-cronometro { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 1.1rem; }
 .acao-item {
     display: flex;
     justify-content: space-between;
@@ -48,17 +82,20 @@
     padding: 12px 0;
     border-top: 1px dashed var(--cor-borda-elemento);
 }
-.acao-titulo { flex-grow: 1; }
+.acao-titulo { 
+    flex-grow: 1; 
+}
+.acao-item.done .acao-titulo {
+    text-decoration: line-through;
+    color: var(--cor-texto-secundario);
+}
 .acao-actions button {
     padding: 8px 15px;
     border: none;
     border-radius: 5px;
     color: white;
-    font-weight: 500;
     cursor: pointer;
     min-width: 100px;
 }
-.acao-actions .btn-iniciar { background-color: #007bff; }
-.acao-actions .btn-concluir { background-color: #28a745; }
-.acao-actions .btn-reabrir { background-color: #ffc107; color: black; }
-.acao-actions button:disabled { background-color: #ccc; cursor: not-allowed; opacity: 0.6; }
+.acao-actions .btn-concluir-acao { background-color: #28a745; }
+.acao-actions .btn-reabrir-acao { background-color: #ffc107; color: black; }

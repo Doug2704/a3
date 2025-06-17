@@ -3,19 +3,20 @@ import * as ApiService from '../apiService.js';
 import { obterToken } from '../authService.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const setupOk = await inicializarPaginaBaseOperador();
-    if (!setupOk) return;
+    await inicializarPaginaBaseOperador();
 
     const dom = {
         planoTitulo: document.getElementById('planoTitulo'),
         detalhesPlano: document.getElementById('detalhes-plano'),
         etapasList: document.getElementById('etapasList'),
+        statusTexto: document.getElementById('status-texto'),
+        cronometroGeralContainer: document.getElementById('cronometro-geral-container'),
+        cronometroGeral: document.getElementById('cronometro-geral'),
+        botoesControlePlano: document.getElementById('botoes-controle-plano'),
+        btnIniciarPlano: document.getElementById('btn-iniciar-plano'),
     };
     
-    let planoCompleto = null;
-    let execucaoAtual = null;
-    let timers = {};
-    
+    let timerGeral;
     const urlParams = new URLSearchParams(window.location.search);
     const idPlano = urlParams.get('id');
 
@@ -23,133 +24,122 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!status) return 'INDEFINIDO';
         return status.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     }
-    
+
     function formatarTempo(totalSegundos) {
         if (isNaN(totalSegundos) || totalSegundos < 0) totalSegundos = 0;
         const horas = Math.floor(totalSegundos / 3600);
         const minutos = Math.floor((totalSegundos % 3600) / 60);
-        const segundos = totalSegundos % 60;
+        const segundos = Math.floor(totalSegundos % 60);
         return `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
     }
 
-    function pararCronometro(idAcao) {
-        if (timers[idAcao]) {
-            clearInterval(timers[idAcao]);
-            delete timers[idAcao];
-        }
-    }
-    
-    function iniciarCronometro(idAcao) {
-        pararCronometro(idAcao);
-        if (!execucaoAtual || !execucaoAtual.openingDate) return;
-        
-        const tsInicio = new Date(execucaoAtual.openingDate).getTime();
+    function iniciarCronometroGeral(startTime) {
+        if (timerGeral) clearInterval(timerGeral);
+        const tsInicio = new Date(startTime).getTime();
         if (isNaN(tsInicio) || tsInicio <= 0) return;
 
-        timers[idAcao] = setInterval(() => {
-            const decorridoSegundos = Math.floor((Date.now() - tsInicio) / 1000);
-            const cronometroEl = document.getElementById(`cronometro-${idAcao}`);
-            if(cronometroEl) cronometroEl.textContent = formatarTempo(decorridoSegundos);
+        timerGeral = setInterval(() => {
+            const decorridoSegundos = (Date.now() - tsInicio) / 1000;
+            dom.cronometroGeral.textContent = formatarTempo(decorridoSegundos);
         }, 1000);
     }
 
-    function renderizarEtapas(etapas) {
-        dom.etapasList.innerHTML = '';
-        if(!etapas || etapas.length === 0) return;
+    function renderizarPagina(plano, execucao) {
+        // Renderiza informações gerais
+        dom.planoTitulo.textContent = plano.title;
+        dom.detalhesPlano.innerHTML = `<p>${plano.incidentDescription}</p>`;
 
-        etapas.forEach(etapa => {
+        // Controla a visibilidade dos botões e status
+        if (execucao && execucao.status === "EXECUTING") {
+            dom.btnIniciarPlano.style.display = 'none';
+            dom.statusTexto.textContent = "Em Execução";
+            dom.cronometroGeralContainer.style.display = 'flex';
+            iniciarCronometroGeral(execucao.openingDate);
+        } else if (execucao && execucao.status === "FINISHED") {
+            dom.btnIniciarPlano.style.display = 'none';
+            dom.statusTexto.textContent = "Finalizado";
+            dom.cronometroGeralContainer.style.display = 'flex';
+            const duracao = (new Date(execucao.finishDate) - new Date(execucao.openingDate)) / 1000;
+            dom.cronometroGeral.textContent = formatarTempo(duracao);
+        } else {
+            dom.btnIniciarPlano.style.display = 'block';
+            dom.statusTexto.textContent = "Não Iniciado";
+            dom.cronometroGeralContainer.style.display = 'none';
+        }
+
+        // Renderiza as etapas e ações
+        dom.etapasList.innerHTML = '';
+        (plano.stepResponseDTOs || []).forEach(etapa => {
             const etapaItem = document.createElement('div');
             etapaItem.className = 'etapa-item';
-            
             const acoesHtml = (etapa.actionResponseDTOs || []).map(acao => {
                 const isDone = acao.isDone;
-                return `
-                <div class="acao-item" data-id-acao="${acao.id}">
-                    <span class="acao-titulo">${acao.title}</span>
-                    <div class="acao-actions">
-                        <button class="btn-concluir" data-id="${acao.id}" ${isDone ? 'disabled' : ''}>Concluir</button>
-                        <button class="btn-reabrir" data-id="${acao.id}" ${!isDone ? 'disabled' : ''}>Reabrir</button>
-                    </div>
-                </div>`;
-            }).join('');
+                const doneClass = isDone ? 'done' : '';
+                // O botão só aparece se a execução já começou
+                const botaoHtml = execucao ? (isDone
+                    ? `<button class="btn-reabrir-acao" data-id="${acao.id}">Reabrir</button>`
+                    : `<button class="btn-concluir-acao" data-id="${acao.id}">Concluir</button>`) : '';
 
-            etapaItem.innerHTML = `
-                <div class="etapa-cabecalho">
-                    <h4>${etapa.title}</h4>
-                    <span class="etapa-status ${etapa.status.toLowerCase()}">${formatarStatus(etapa.status)}</span>
-                </div>
-                <div class="etapa-info">
-                    <p><strong>Área Responsável:</strong> ${etapa.responsibleArea}</p>
-                    <div class="etapa-cronometro">
-                        <i class="fa-regular fa-clock"></i>&nbsp;
-                        <span class="cronometro" id="cronometro-plano-${planoCompleto.id}">00:00:00</span>
-                    </div>
-                </div>
-                <div class="etapa-acoes-container">
-                    ${acoesHtml}
-                </div>
-            `;
+                return `<div class="acao-item ${doneClass}" data-id-acao="${acao.id}">
+                            <span class="acao-titulo">${acao.title}</span>
+                            <div class="acao-actions">${botaoHtml}</div>
+                        </div>`;
+            }).join('');
+            etapaItem.innerHTML = `<div class="etapa-cabecalho"><h4>${etapa.title}</h4></div>
+                                 <div class="etapa-acoes-container">${acoesHtml}</div>`;
             dom.etapasList.appendChild(etapaItem);
         });
-        if(execucaoAtual && execucaoAtual.status === 'IN_PROGRESS') {
-            iniciarCronometro(planoCompleto.id);
-        }
     }
     
-    async function carregarDados() {
-        const token = obterToken();
-        const [planoResp, execucaoResp] = await Promise.all([
-            ApiService.buscarPlanoAcaoPorId(idPlano, token),
-            ApiService.buscarExecucaoPorPlano(idPlano, token)
-        ]);
-
-        if (planoResp.ok) {
-            planoCompleto = planoResp.data;
-            dom.planoTitulo.textContent = planoCompleto.title;
-            dom.detalhesPlano.innerHTML = `<p>${planoCompleto.incidentDescription}</p>`;
-            if(execucaoResp.ok && execucaoResp.data.length > 0) {
-                execucaoAtual = execucaoResp.data[0];
-            }
-            renderizarEtapas(planoCompleto.stepResponseDTOs);
-        } else {
-            dom.planoTitulo.textContent = "Erro ao Carregar Plano";
-        }
-    }
-    
-    async function iniciarPlano() {
-        if (execucaoAtual) {
-            renderizarEtapas(planoCompleto.stepResponseDTOs);
+    async function carregarDadosIniciais() {
+        if (!idPlano) {
+            window.location.href = 'visualizar_planos_operador.html';
             return;
         }
-        // Aqui está a correção da chamada
-        const resposta = await ApiService.iniciarExecucaoPlano(idPlano, {}, obterToken());
-        if(resposta.ok) {
-            await carregarDados();
+
+        const token = obterToken();
+        // Tentamos buscar uma execução existente primeiro, para saber o estado do plano
+        const execucaoResp = await ApiService.iniciarOuBuscarExecucaoPlano(idPlano, token);
+        const plano = execucaoResp.ok ? execucaoResp.data.planResponseDTO : (await ApiService.buscarPlanoAcaoPorId(idPlano, token)).data;
+        const execucao = execucaoResp.ok ? execucaoResp.data : null;
+        
+        renderizarPagina(plano, execucao);
+    }
+    
+    dom.btnIniciarPlano.addEventListener('click', async () => {
+        const token = obterToken();
+        const execucaoResp = await ApiService.iniciarOuBuscarExecucaoPlano(idPlano, token);
+        if (execucaoResp.ok) {
+            renderizarPagina(execucaoResp.data.planResponseDTO, execucaoResp.data);
         } else {
             alert('Falha ao iniciar a execução do plano.');
         }
-    }
-    
+    });
+
     dom.etapasList.addEventListener('click', async e => {
         const idAcao = e.target.dataset.id;
         if (!idAcao) return;
-
-        let concluir = false;
-        if (e.target.classList.contains('btn-concluir')) concluir = true;
-        else if (e.target.classList.contains('btn-reabrir')) concluir = false;
-        else return;
-
-        const resposta = await ApiService.concluirAcao(idAcao, obterToken(), concluir);
-        if (resposta.ok) {
-            await carregarDados();
+    
+        const token = obterToken();
+        let resposta = null;
+        let marcarComoFeita = false;
+    
+        if (e.target.classList.contains('btn-concluir-acao')) {
+            marcarComoFeita = true;
+        } else if (e.target.classList.contains('btn-reabrir-acao')) {
+            marcarComoFeita = false;
         } else {
-            alert('Falha ao atualizar status da ação.');
+            return;
+        }
+        
+        resposta = await ApiService.marcarAcaoFeita(idAcao, marcarComoFeita, token);
+    
+        if (resposta && resposta.ok) {
+            await carregarDadosIniciais();
+        } else {
+            alert('Falha ao atualizar o status da ação.');
         }
     });
 
-    if (idPlano) {
-        iniciarPlano();
-    } else {
-        window.location.href = 'visualizar_planos_operador.html';
-    }
+    carregarDadosIniciais();
 });

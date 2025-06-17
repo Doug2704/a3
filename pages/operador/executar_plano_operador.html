@@ -21,6 +21,20 @@
             <a href="visualizar_planos_operador.html" class="btn-voltar">Voltar para a lista</a>
         </header>
         <main class="pagina-execucao-plano">
+            <div id="status-geral-plano" class="status-geral-container">
+                <div id="status-plano" class="status-plano-info">
+                    <strong>Status do Plano:</strong> <span id="status-texto">Não iniciado</span>
+                </div>
+                <div id="cronometro-geral-container" class="cronometro-geral-info" style="display: none;">
+                    <strong>Tempo de Execução:</strong>
+                    <span id="cronometro-geral">00:00:00</span>
+                </div>
+            </div>
+
+            <div id="botoes-controle-plano" class="botoes-controle-container">
+                <button id="btn-iniciar-plano" class="btn-principal-acao">Iniciar Execução do Plano</button>
+            </div>
+
             <div id="detalhes-plano" class="detalhes-plano-resumo"></div>
             <div id="etapasList" class="etapas-list-execucao"></div>
         </main>

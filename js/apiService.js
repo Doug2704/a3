@@ -10,7 +10,6 @@ async function handleResponse(resposta) {
     } catch (err) {
         dados = { mensagem: "Resposta do servidor em formato inesperado." };
     }
-
     if (!resposta.ok) {
         return {
             ok: false,
@@ -27,12 +26,10 @@ async function apiRequest(endpoint, method = 'GET', body = null, token = null) {
         method: method,
         headers: { 'Content-Type': 'application/json' }
     };
-
     if (method === 'GET') {
         const cacheBustParam = `_=${Date.now()}`;
         url += url.includes('?') ? `&${cacheBustParam}` : `?${cacheBustParam}`;
     }
-
     if (token) {
         options.headers['Authorization'] = `Bearer ${token}`;
     }
@@ -109,7 +106,6 @@ export async function apiLogin(login, senha) {
 export async function apiLogout(token) { return apiRequest(`/auth/logout`, 'POST', {}, token); }
 
 export async function buscarTodasAsAreas(token) { return apiRequest(`/areas/find/all`, 'GET', null, token); }
-export async function buscarAreasEAtivosAdmin(token) { return buscarTodasAsAreas(token); }
 export async function buscarAreaPorId(areaId, token) { return apiRequest(`/areas/find/${areaId}`, 'GET', null, token); }
 export async function criarArea(dadosArea, token) { return apiRequest(`/areas/create`, 'POST', dadosArea, token); }
 export async function atualizarArea(areaId, dadosArea, token) { return apiRequest(`/areas/update/${areaId}`, 'PUT', dadosArea, token); }
@@ -132,7 +128,6 @@ export async function excluirAtivo(ativoId, token) { return apiRequest(`/assets/
 export async function buscarPlanosAcaoTodos(token) { return apiRequest(`/plans/find/all`, 'GET', null, token); }
 export async function buscarPlanoAcaoPorId(idPlano, token) { return apiRequest(`/plans/find/${idPlano}`, 'GET', null, token); }
 export async function buscarPlanosPorArea(areaId, token) { return apiRequest(`/plans/find/byAreaId/${areaId}`, 'GET', null, token); }
-// AQUI ESTÁ A CORREÇÃO: Renomeado de "criarPlanoAcao" para "criarPlanoAcaoGerenciador" para corresponder à chamada no seu formulário.
 export async function criarPlanoAcaoGerenciador(dadosPlano, token) { return apiRequest(`/plans/create`, 'POST', dadosPlano, token); }
 export async function atualizarPlanoAcao(idPlano, dadosPlano, token) { return apiRequest(`/plans/update/${idPlano}`, 'PUT', dadosPlano, token); }
 export async function apagarPlanoAcao(idPlano, token) { return apiRequest(`/plans/delete/${idPlano}`, 'DELETE', null, token); }
@@ -142,10 +137,17 @@ export async function buscarEtapasPorPlano(planId, token) { return apiRequest(`/
 export async function atualizarEtapa(stepId, dadosEtapa, token) { return apiRequest(`/steps/update/${stepId}`, 'PUT', dadosEtapa, token); }
 export async function apagarEtapa(stepId, token) { return apiRequest(`/steps/delete/${stepId}`, 'DELETE', null, token); }
 
-export async function concluirAcao(actionId, token) { return apiRequest(`/actions/done/${actionId}`, 'PUT', {}, token); }
+export async function marcarAcaoFeita(actionId, isDone, token) {
+    const endpoint = isDone ? `/actions/${actionId}/done` : `/actions/${actionId}/reopen`;
+    return apiRequest(endpoint, 'PUT', {}, token);
+}
 
-export async function iniciarExecucaoPlano(planId, payload, token) { return apiRequest(`/exec/start/${planId}`, 'POST', payload, token); }
-export async function finalizarExecucaoPlano(executionId, token) { return apiRequest(`/executions/finish/${executionId}`, 'PUT', {}, token); }
+export async function iniciarOuBuscarExecucaoPlano(planId, token) {
+    return apiRequest(`/exec/start/${planId}`, 'POST', {}, token);
+}
+export async function finalizarExecucaoPlano(executionId, token) { 
+    return apiRequest(`/executions/finish/${executionId}`, 'PUT', {}, token); 
+}
 
 export async function buscarLogs(token) { return apiRequest(`/audit/logs`, 'GET', null, token); }
 

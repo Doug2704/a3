@@ -1,6 +1,6 @@
 import { inicializarPaginaBaseAdmin } from './adminPageSetup.js';
 import { obterToken } from '../authService.js';
-import { criarUsuario, buscarAreasEAtivosAdmin } from '../apiService.js';
+import { criarUsuario, buscarTodasAsAreas } from '../apiService.js';
 
 async function popularSelectAreas() {
     const selectAreaEl = document.getElementById('usuarioAreaId');
@@ -10,7 +10,7 @@ async function popularSelectAreas() {
     selectAreaEl.disabled = true;
 
     try {
-        const resposta = await buscarAreasEAtivosAdmin(obterToken());
+        const resposta = await buscarTodasAsAreas(obterToken());
         if (resposta.ok && Array.isArray(resposta.data)) {
             selectAreaEl.innerHTML = '<option value="">Selecione uma área...</option>';
             if (resposta.data.length > 0) {
@@ -79,9 +79,9 @@ async function inicializarPaginaCadastro() {
             }
             
             if (selectAreaEl && !selectAreaEl.value) {
-                 alert('Por favor, selecione uma área para o usuário.');
-                 selectAreaEl.focus();
-                 return;
+                alert('Por favor, selecione uma área para o usuário.');
+                selectAreaEl.focus();
+                return;
             }
 
             const dadosForm = new FormData(formCadastro);

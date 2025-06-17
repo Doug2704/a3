@@ -21,8 +21,12 @@ async function preencherFormulario(usuario, areas) {
             option.textContent = area.name || area.nomeArea;
             areaSelect.appendChild(option);
         });
-        if (usuario.actuationAreaId) {
-            areaSelect.value = usuario.actuationAreaId;
+        
+        if (usuario.actuationArea) {
+            const areaDoUsuario = areas.find(area => area.name === usuario.actuationArea);
+            if (areaDoUsuario) {
+                areaSelect.value = areaDoUsuario.id;
+            }
         }
     }
 }
