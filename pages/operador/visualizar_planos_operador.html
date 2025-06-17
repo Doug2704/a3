@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos de Ação - Incidex</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/operador/operador-layout.css">
+    <link rel="stylesheet" href="../../css/operador/visualizar_planos_operador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+    <button id="btn-alternar-tema" title="Alternar Tema"></button> 
+    <button id="btn-toggle-sidebar" class="btn-toggle-sidebar">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <div id="sidebar-placeholder"></div>
+    <div class="conteudo-principal-operador" id="conteudoPrincipalOperador">
+        <header class="cabecalho-pagina-operador">
+            <h1><i class="fa-solid fa-list-check"></i> Planos de Ação para Execução</h1>
+        </header>
+        <main class="pagina-planos-operador">
+            <div class="container-filtros">
+                <div class="filtro-item">
+                    <label for="filtroPlanosTexto">Filtrar por Título:</label>
+                    <input type="search" id="filtroPlanosTexto" placeholder="Digite o título...">
+                </div>
+                <div class="filtro-item">
+                    <label for="filtroPlanosArea">Filtrar por Área Responsável:</label>
+                    <select id="filtroPlanosArea">
+                        <option value="">Todas as Áreas</option>
+                    </select>
+                </div>
+            </div>
+            <div id="planosList" class="planos-list-operador">
+                <p class="carregando-dados">Carregando planos...</p>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="../../js/config.js"></script>
+    <script type="module" src="../../js/themeManager.js"></script>
+    <script type="module" src="../../js/authService.js"></script>
+    <script type="module" src="../../js/apiService.js"></script>
+    <script type="module" src="../../js/operador/operadorPageSetup.js"></script>
+    <script type="module" src="../../js/operador/visualizarPlanosOperador.js"></script>
+</body>
+</html>

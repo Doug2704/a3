@@ -1,0 +1,64 @@
+.cabecalho-pagina-operador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.btn-voltar {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--cor-link);
+    white-space: nowrap;
+}
+.detalhes-plano-resumo {
+    background-color: var(--cor-fundo-elemento);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid var(--cor-borda-elemento);
+    line-height: 1.6;
+}
+.etapa-item {
+    background-color: var(--cor-fundo-elemento);
+    border: 1px solid var(--cor-borda-elemento);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+.etapa-cabecalho { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    border-bottom: 1px solid var(--cor-borda-elemento);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.etapa-cabecalho h4 { margin: 0; font-size: 1.2rem; }
+.etapa-status { font-weight: bold; padding: 4px 10px; border-radius: 15px; color: white; font-size: 0.8rem; text-transform: uppercase; }
+.etapa-status.not_started { background-color: #6c757d; }
+.etapa-status.in_progress { background-color: #007bff; }
+.etapa-status.completed { background-color: #28a745; }
+.etapa-info { margin: 15px 0; }
+.etapa-info p { margin: 5px 0 10px 0; }
+.etapa-cronometro { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 1.1rem; }
+.acao-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-top: 1px dashed var(--cor-borda-elemento);
+}
+.acao-titulo { flex-grow: 1; }
+.acao-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    min-width: 100px;
+}
+.acao-actions .btn-iniciar { background-color: #007bff; }
+.acao-actions .btn-concluir { background-color: #28a745; }
+.acao-actions .btn-reabrir { background-color: #ffc107; color: black; }
+.acao-actions button:disabled { background-color: #ccc; cursor: not-allowed; opacity: 0.6; }

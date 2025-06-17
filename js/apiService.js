@@ -144,7 +144,7 @@ export async function apagarEtapa(stepId, token) { return apiRequest(`/steps/del
 
 export async function concluirAcao(actionId, token) { return apiRequest(`/actions/done/${actionId}`, 'PUT', {}, token); }
 
-export async function iniciarExecucaoPlano(payload, token) { return apiRequest(`/executions/start`, 'POST', payload, token); }
+export async function iniciarExecucaoPlano(planId, payload, token) { return apiRequest(`/exec/start/${planId}`, 'POST', payload, token); }
 export async function finalizarExecucaoPlano(executionId, token) { return apiRequest(`/executions/finish/${executionId}`, 'PUT', {}, token); }
 
 export async function buscarLogs(token) { return apiRequest(`/audit/logs`, 'GET', null, token); }

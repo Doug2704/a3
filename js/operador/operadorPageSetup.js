@@ -6,14 +6,31 @@ let sidebarElement = null;
 let toggleButtonElement = null;
 
 function fecharSidebar() {
-    if (sidebarElement && toggleButtonElement) {
+    if (sidebarElement) {
         sidebarElement.classList.remove('aberta');
         document.body.classList.remove('sidebar-operador-aberta');
-        const icone = toggleButtonElement.querySelector('i');
-        if (icone) {
-            icone.classList.remove('fa-times');
-            icone.classList.add('fa-bars');
-        }
+    }
+}
+
+function configurarEventosSidebar() {
+    toggleButtonElement = document.getElementById('btn-toggle-sidebar');
+    const btnLogout = document.getElementById('btn-logout');
+    const btnCloseSidebar = document.getElementById('btn-close-sidebar');
+
+    if (btnLogout) btnLogout.addEventListener('click', AuthService.logoutUsuario);
+    if (btnCloseSidebar) btnCloseSidebar.addEventListener('click', fecharSidebar);
+    
+    if (toggleButtonElement && sidebarElement) {
+        toggleButtonElement.addEventListener('click', (event) => {
+            event.stopPropagation();
+            sidebarElement.classList.toggle('aberta');
+            document.body.classList.toggle('sidebar-operador-aberta');
+        });
+        document.addEventListener('click', (event) => {
+            if (sidebarElement.classList.contains('aberta') && !sidebarElement.contains(event.target) && !toggleButtonElement.contains(event.target)) {
+                fecharSidebar();
+            }
+        });
     }
 }
 
@@ -27,40 +44,18 @@ async function carregarSidebar() {
         sidebarElement = document.getElementById('sidebarOperador');
         if (sidebarElement) {
             const nomeSoftwareEl = sidebarElement.querySelector('#nome-software-sidebar');
-            if (nomeSoftwareEl) nomeSoftwareEl.textContent = NOME_DO_SOFTWARE;
-            
-            const btnLogoutSidebar = document.getElementById('btn-logout-sidebar');
-            if (btnLogoutSidebar) btnLogoutSidebar.addEventListener('click', AuthService.logoutUsuario);
-
+            if (nomeSoftwareEl) nomeSoftwareEl.textContent = NOME_DO_SOFTWARE || "Incidex";
             const links = sidebarElement.querySelectorAll('.sidebar-nav .nav-link');
-            const paginaAtual = window.location.pathname.split('/').pop().split('.')[0];
+            const paginaAtual = window.location.pathname.split('/').pop();
             links.forEach(link => {
-                if (link.dataset.page === paginaAtual) link.classList.add('ativo');
+                if (link.getAttribute('href') === paginaAtual) {
+                    link.classList.add('ativo');
+                }
             });
+            configurarEventosSidebar();
         }
     } catch (error) {
         console.error("OPERADOR SETUP: Falha ao carregar a sidebar:", error);
-    }
-}
-
-function configurarToggleSidebar() {
-    toggleButtonElement = document.getElementById('btn-toggle-sidebar');
-    if (toggleButtonElement && sidebarElement) {
-        toggleButtonElement.addEventListener('click', (event) => {
-            event.stopPropagation();
-            sidebarElement.classList.toggle('aberta');
-            document.body.classList.toggle('sidebar-operador-aberta');
-            const icone = toggleButtonElement.querySelector('i');
-            if (icone) {
-                icone.classList.toggle('fa-bars', !sidebarElement.classList.contains('aberta'));
-                icone.classList.toggle('fa-times', sidebarElement.classList.contains('aberta'));
-            }
-        });
-        document.addEventListener('click', (event) => {
-            if (sidebarElement.classList.contains('aberta') && !sidebarElement.contains(event.target) && !toggleButtonElement.contains(event.target)) {
-                fecharSidebar();
-            }
-        });
     }
 }
 
@@ -78,13 +73,12 @@ export async function inicializarPaginaBaseOperador() {
     ThemeManager.aplicarTemaInicial();
     const themeToggleButton = document.getElementById('btn-alternar-tema');
     if (themeToggleButton) {
-        themeToggleButton.textContent = ThemeManager.isDarkModeAtivo() ? '☀️' : '🌙';
+        themeToggleButton.innerHTML = ThemeManager.isDarkModeAtivo() ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         themeToggleButton.addEventListener('click', () => {
             ThemeManager.alternarTema();
-            themeToggleButton.textContent = ThemeManager.isDarkModeAtivo() ? '☀️' : '🌙';
+            themeToggleButton.innerHTML = ThemeManager.isDarkModeAtivo() ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
     }
     await carregarSidebar();
-    configurarToggleSidebar();
     return true;
 }
